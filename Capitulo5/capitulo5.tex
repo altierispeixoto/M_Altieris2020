@@ -1,0 +1,17 @@
+%%%% CAPÍTULO 5 - CONCLUSÕES E PERSPECTIVAS
+%%
+%% Deve finalizar o trabalho com uma resposta às
+%% hipóteses especificadas na introdução. O autor deve
+%% manifestar seu ponto de vista sobre os resultados
+%% obtidos; não se deve incluir neste capítulo novos
+%% dados ou equações. A partir da tese, alguns assuntos
+%% que foram identificados como importantes para serem
+%% explorados poderão ser sugeridos como temas para
+%% novas pesquisas.
+
+%% Título e rótulo de capítulo (rótulos não devem conter caracteres especiais, acentuados ou cedilha)
+\chapter{Conclusões e Perspectivas}\label{cap:conclusoeseperspectivas}
+
+% Deve finalizar o trabalho com uma resposta às hipóteses especificadas na introdução. O autor deve manifestar seu ponto de vista sobre os resultados obtidos; não se deve incluir neste capítulo novos dados ou equações. A partir da tese, alguns assuntos que foram identificados como importantes para serem explorados poderão ser sugeridos como temas para novas pesquisas.
+
+Este trabalho propôs uma plataforma computacional para construção automática de um banco de dados de grafo a partir de um repositório de dados abertos com informações da operação diária do transporte de Curitiba. O modelo utilizado corresponde a um grafo variante no tempo (TVG) disponível na literatura com poucas modificações. A plataforma computacional transforma dados brutos do repositório para a base de dados de grafos do Neo4j. Diversos algoritmos de análise de redes complexas podem então ser aplicados. Resultados de centralidade de grau, \emph{page rank} e centralidade de intermediação permitiram identificar pontos de ônibus relevantes na rede, seja pela concentração de linhas (rede estática, sem movimentação de ônibus) ou paradas de ônibus (rede dinâmica, considerando a movimentação de ônibus), além de características dos caminhos da rede. Estas medidas são úteis para o planejamento do transporte, pois permitem avaliar a área coberta e a frequência e regularidade dos serviços. Esta última é particularmente importante no estabelecimento da integração temporal das linhas, quando uma tarifa é válida por um determinado período de tempo em toda ou parte da rede de transporte. Embora os resultados de análise tenham sido apresentados para o sistema de transporte de Curitiba, o modelo pode ser adaptado para o transporte de ônibus de outras cidades. Como trabalhos futuros pode-se incluir o tratamento de regiões geográficas para análises de bairros ou outros agrupamentos georreferenciados. Da mesma forma, a inclusão de informações de arruamento baseado no \emph{OpenStreetMap} permitirá relacionar a operação do transporte às vias de circulação da cidade.

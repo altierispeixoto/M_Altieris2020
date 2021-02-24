@@ -6,42 +6,60 @@
 %% do assunto, formulação de hipóteses e objetivos
 %% da pesquisa e estrutura do trabalho.
 
+\definecolor{courb2020}{RGB}{0, 204,0}
+
+
 %% Título e rótulo de capítulo (rótulos não devem conter caracteres especiais, acentuados ou cedilha)
 \chapter{Introdução}\label{cap:introducao}
 
 \section{Motivação}
-% Deve apresentar uma visão global da pesquisa, incluindo: breve histórico, importância e justificativa da escolha do tema, delimitações do assunto, formulação de hipóteses, objetivos da pesquisa e estrutura do trabalho.
 
 De acordo com ~\cite{Dem:20}, nos últimos anos, a população mundial tornou-se mais da metade urbana. É estimado que em 2025, as áreas urbanas ao redor do globo representem 58\% da população mundial, aumentando para mais dois terços em 2050~\cite{new:20}. 
 Este expressivo aumento populacional e expansão urbana traz grandes desafios no planejamento urbano, nas mais diversas áreas, tais como saúde, infraestrutura e mobilidade. 
 Com finalidades variadas, diariamente, milhares de pessoas ao redor do mundo utilizam transporte público para se locomover nas cidades.
 Nas grandes metrópoles, as pessoas cobrem grandes distâncias e passam um tempo razoável em trânsito.
 O relatório de 2020 sobre o cenário do Transporte Público no mundo divulgado pelo Moovit~\cite{Mov:20} (aplicativo usado diariamente por 865 milhões de passageiros de todo o mundo), mostra que no Brasil, aproximadamente
-um 10\% dos usuários se desloca por mais de 2 horas diárias em grandes cidades como Rio de Janeiro, Recife e São Paulo. Além disso, aproximadamente 40\% dos usuários esperam mais de 20 minutos por dia na estação de onibus.
+um 10\% dos usuários se desloca por mais de 2 horas diárias em grandes cidades como Rio de Janeiro, Recife e São Paulo. Além disso, aproximadamente 40\% dos usuários esperam mais de 20 minutos por dia na estação de ônibus.
 
+\textcolor{courb2020}{
 Segundo~\cite{fer:04}, uma maior utilização do transporte público favorece a mitigação dos problemas de congestionamento, poluição, acidentes, desumanização e outros males que afligem as cidades modernas. 
 Assim, estudar e propor melhorias e otimizações em mobilidade urbana torna-se importante à medida que as cidades enfrentam problemas no fornecimento de transporte público de qualidade.
+}
 
+\textcolor{courb2020}{
+O estudo das relações dinâmicas entre as estruturas topológicas de uma rede de transporte e os padrões de mobilidade nesta rede se faz importante para a criação de soluções inovadoras para problemas de confiabilidade, otimização, vulnerabilidade e previsão de tráfego. Todavia, um dos maiores desafios da área de gerência, planejamento e operação do transporte é a coleta e manipulação das mais variadas fontes e volumes de dados disponíveis, geralmente provenientes de sensores de localização instalados nos veículos~\cite{wes:17}. 
+}
+
+
+\textcolor{courb2020}{
 Conhecida pela constante inovação em mobilidade urbana desde os anos 70, Curitiba investe na priorização do transporte público, sendo citada como uma cidade referência na área~\cite{CWBconhecida}. Desde 1974, a cidade de Curitiba conta com sua Rede Integrada de Transporte (RIT), baseada em ônibus urbanos e que permite que o passageiro troque de linhas em determinados pontos com o custo de uma única tarifa. Atualmente, Curitiba é atendida por uma frota de 1410 ônibus operantes (mais reserva) e atende cerca de 1.389.731 passageiros por dia com 251 linhas de ônibus, 329 estações e 21 terminais~\cite{Cur:19}. 
 A administração da rede pública de transporte de Curitiba é realizada pela Urbanização de Curitiba S/A (URBS), uma empresa de economia mista responsável pela fiscalização das empresas particulares prestadoras de serviços~\cite{URBS}. Através de levantamentos realizados junto à população, a qualidade do transporte, assim como rotas preferenciais, número de passageiros transportados e horários de maior demanda são estimados, bem como auxiliam no planejamento operacional do sistema (inclusão de novas linhas de ônibus e atualização da programação horária, por exemplo).
- 
-Todavia, uma das dificuldades no estudo da mobilidade e transporte público urbanos é a coleta e manipulação das mais variadas fontes e volumes de dados disponíveis~\cite{wes:17}. O sistema de transporte coletivo de ônibus de Curitiba possui atualmente um repositório com dados abertos sobre sua operação\footnote{http://dadosabertos.c3sl.ufpr.br/}. Este repositório é continuamente alimentado com dados brutos da operação provenientes de sensores e dispositivos móveis que capturam a movimentação dos ônibus ao longo do dia. Entretanto, a utilização destes dados requer um modelo de dados adequado para análises mais complexas, que envolvem não apenas dados estáticos de configuração da rede de transporte, mas também dinâmicos de sua operação.
+}
 
- 
+\textcolor{courb2020}{
+O sistema de transporte coletivo de ônibus de Curitiba possui atualmente um repositório com dados abertos sobre sua operação\footnote{http://dadosabertos.c3sl.ufpr.br/}. Este repositório é continuamente alimentado com dados brutos da operação provenientes de sensores e dispositivos móveis que capturam a movimentação dos ônibus ao longo do dia. Entretanto, a utilização destes dados requer um modelo de dados adequado para análises mais complexas, que envolvem não apenas dados estáticos de configuração da rede de transporte, mas também dinâmicos de sua operação.
+}
+
+\textcolor{courb2020}{
 Em geral, modelos estáticos de redes complexas são utilizados para caracterizar estatisticamente as redes de transporte a partir de métricas como centralidades de grau, proximidade e intermediação, distribuição dos comprimentos dos caminhos mínimos, coeficiente de agrupamento, dentre outras. Métricas de redes complexas foram utilizadas para caracterizar a conexão entre estações do sistema do sistema de transporte na Polônia~\cite{Sienkiewicz2005}, China~\cite{Xu2013} e Brasil~\cite{Izawa2017}. A caracterização temporal de redes de transporte de ônibus de Curitiba aparece em~\cite{curz:19} usando \emph{link streams} e de diversos modais de transporte na Grã-Bretanha em~\cite{Gallotti2015} usando redes \emph{multilayer}.
+}
 
+\section{Estrutura do Documento}
+\label{sec:estrutura}
 
-% Diversos trabalhos da literatura utilizam grafos para a modelagem de sistemas de transporte coletivo. Vários deles na descrição estática das redes de transporte, localizando geograficamente locais de embarque e desembarque, assim como linhas ... Estes modelos servem de base para análises estruturais dos sistemas de transporte, identificando áreas de cobertura de atendimentos, pontos de interconexão, distâncias percorridas, dentre outras.
+% O Capítulo 2 apresenta uma revisão da literatura sobre o transporte coletivo urbano, acessibilidade com foco no transporte público, indicadores de acessibilidade relacionados ao transporte. No capítulo 3, são descritos os procedimentos e ferramentas adotados para avaliar a acessibilidade do transporte para se chegar às US, assim como é apresentado um modelo para identificar os bairros prioritários em termos de investimento ou ajuste na rede de transporte. No capítulo 4, são apresentados os principais resultados encontrados para o estudo de caso realizado, dando destaque para as análises baseadas nas distâncias, tempo de viagem e sua relação com a renda média da população. No capítulo 5, são apresentadas as conclusões do trabalho e propostas de trabalho futuro.
 
+% Na organização do artigo, a Seção~\ref{sec:fund} contém conceitos básicos e trabalhos relacionados. A Seção~\ref{sec:met} apresenta o modelo proposto. A Seção~\ref{sec:metr} define as métricas de redes complexas. A Seção~\ref{sec:impl} descreve a plataforma computacional desenvolvida. A Seção~\ref{sec:result} apresenta os resultados obtidos das métricas computadas para o transporte de Curitiba a partir do banco de dados de grafos. Conclusões e trabalhos futuros estão na Seção~\ref{sec:conclu}.
 
- \section{Objetivos}
+\section{Objetivos}
  
- \subsection{Geral}
+\subsection{Geral}
 
- O estudo das relações dinâmicas entre as estruturas topológicas de uma rede de transporte e os padrões de mobilidade nesta rede se faz importante para a criação de soluções inovadoras para problemas de confiabilidade, otimização, vulnerabilidade e previsão de tráfego. Todavia, um dos maiores desafios da área de gerência, planejamento e operação do transporte é a manipulação de um grande volume de dados, geralmente provenientes de sensores de localização instalados nos veículos. 
- 
- Este trabalho tem por objetivo modelar o sistema de transporte coletivo da cidade de Curitiba usando uma base de dados de grafos gerada a partir de um repositório de dados abertos com informações da operação diária do transporte. O modelo proposto é baseado em \cite{wach:19}, sendo o foco do trabalho a implementação deste modelo para Curitiba. A principal contribuição é o desenvolvimento de uma plataforma computacional para a construção automática da base de grafo a partir do repositório de dados abertos. A infraestrutura computacional e a transformação dos dados do repositório para a base de dados de grafo são detalhadas. 
- 
+
+\textcolor{courb2020}{
+Este trabalho tem por objetivo modelar o sistema de transporte coletivo da cidade de Curitiba usando uma base de dados de grafos gerada a partir de um repositório de dados abertos com informações da operação diária do transporte. O modelo proposto é baseado em \cite{wach:19}, sendo o foco do trabalho a implementação deste modelo para Curitiba. A principal contribuição é o desenvolvimento de uma plataforma computacional para a construção automática da base de grafo a partir do repositório de dados abertos. A infraestrutura computacional e a transformação dos dados do repositório para a base de dados de grafo são detalhadas. 
+}
+
  \subsection{Específico}
  
  \begin{itemize}

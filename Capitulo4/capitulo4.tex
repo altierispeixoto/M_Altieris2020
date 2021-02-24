@@ -14,64 +14,98 @@
 % Deve descrever detalhadamente os dados obtidos pelo autor. Normalmente são incluídas ilustrações como: quadros, tabelas, gráficos, etc. Deve efetuar a comparação dos dados obtidos e/ou resultados, com aqueles descritos na revisão de literatura, incluindo os comentários sobre os estudos de outros autores.
 
 
-Os resultados foram obtidos para o período de  01/01/2019 a 30/06/2019, tendo sido coletados 98,6 Gigabytes de dados, com 753.977.108 registros de geolocalização dos 1.835 ônibus em operação. Este volume de dados gerou, após a transformação para o banco de dados de grafo do Neo4j, 88.860.135 vértices e 200.075.643 arestas.
+Os resultados foram obtidos para o período de  01/03/2019 a 30/06/2019, tendo sido coletados 33 Gigabytes de dados, com 293.390.175 registros de geolocalização dos 1708 ônibus em operação. Este volume de dados gerou, após a transformação para o banco de dados de grafo do Neo4j, 26.869.679 vértices e 93.082.943 arestas.
 
 %\ric{Seria importante apresentar uma tabela com um resumo das principais características dos dados utilizados (data de coleta dos dados, no. de linhas, pontos, etc.) e do banco obtido (no. de nós - linhas, trips, stops, bus stops, etc.), no. de arestas em geral, etc. Além disso, o tempo de computação necessário para gerar o banco no Neo4j.}
 
-% \ric{A Tabela~\ref{tab:neo} mostra estatísticas do banco de dados construído no Neo4j, com informações sobre o transporte coletivo de Curitiba coletados durante o período de 01/01/2019 a 30/06/2019.}
+A Tabela~\ref{tab:neo} mostra estatísticas do banco de dados construído no Neo4j, com informações sobre o transporte coletivo de Curitiba coletados durante o período de 01/03/2019 a 30/06/2019.
 
-% \begin{table}[h]
-%     \caption{Estatísticas do banco de dados de grafo construído.}
-%     \label{tab:neo}
-%     \centering
-%     \begin{tabular}{ccc} 
-%         \hline
-%         No. vértices & No. de arestas & ???\\
-%         \hline
-%         88.860.135 & 200.075.643 & xxx \\
-%         \hline  
-%     \end{tabular}
-% \end{table}
+\begin{table}[h]
+    \caption{Estatísticas do banco de dados de grafo construído.}
+    \label{tab:neo}
+    \centering
+    \begin{tabular}{ccc} 
+        \hline
+        No. vértices & No. de arestas & ???\\
+        \hline
+        26.869.679 & 93.082.943 & xxx \\
+        \hline  
+    \end{tabular}
+\end{table}
+
+
+\begin{figure}
+\centering
+\includegraphics[width=.9\textwidth]{Capitulo4/img/eventos_proximidade.png}
+\caption{Número de eventos de proximidade coletados no período de 01/03/2019 à 30/06/2019.}
+\label{fig:eventos-de-proximidade}
+\end{figure}
+
+
+\begin{figure}
+\centering
+\includegraphics[width=.9\textwidth]{Capitulo4/img/centralidade-grau.png}
+\caption{Centralidade de grau da rede estática.}
+\label{fig:eventos-de-proximidade}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=.9\textwidth]{Capitulo4/img/pagerank.png}
+\caption{PageRank da rede estática.}
+\label{fig:eventos-de-proximidade}
+\end{figure}
+
+
+\begin{figure}
+\centering
+\includegraphics[width=.9\textwidth]{Capitulo4/img/centralidade-intermediacao.png}
+\caption{Centralidade de Intermediação.}
+\label{fig:eventos-de-proximidade}
+\end{figure}
+
+\section{Terminal Virtual}
+
 
 %\ric{Cada resultado precisa ser explicado.}
 
-A Figura~\ref{fig:centralidade-grau-estatica} mostra a centralidade de grau considerando apenas os pontos de ônibus (rede estática, ou seja, sem movimentação de ônibus). Os pontos 150331, 110026 e 150332 são os pontos de maior centralidade de grau, ou seja, conectam um número maior de pontos de ônibus devido a um maior número de linhas que passam por estes pontos. Em Curitiba, enquanto que o segundo ponto localiza-se na região central da cidade, os dois outros pontos (150331 e 150332) localizam-se na região sul da cidade. Em todos os casos, são pontos para onde convergem várias linhas de ônibus antes de chegarem a terminais importantes da cidade (terminal Pinheirinho ao sul, nos caso dos pontos 150331 e 150332, e praça Rui Barbosa no centro, no caso do ponto 110026). 
+% A Figura~\ref{fig:centralidade-grau-estatica} mostra a centralidade de grau considerando apenas os pontos de ônibus (rede estática, ou seja, sem movimentação de ônibus). Os pontos 150331, 110026 e 150332 são os pontos de maior centralidade de grau, ou seja, conectam um número maior de pontos de ônibus devido a um maior número de linhas que passam por estes pontos. Em Curitiba, enquanto que o segundo ponto localiza-se na região central da cidade, os dois outros pontos (150331 e 150332) localizam-se na região sul da cidade. Em todos os casos, são pontos para onde convergem várias linhas de ônibus antes de chegarem a terminais importantes da cidade (terminal Pinheirinho ao sul, nos caso dos pontos 150331 e 150332, e praça Rui Barbosa no centro, no caso do ponto 110026). 
 %Cabe ressaltar que a rede complexa construída considera pontos distintos, mesmo em terminais de ônibus, seguindo representação da URBS.
 
 %{\bf Resultado 1:} Grau dos nós (\emph{Bus Stop}) para a rede estática (sem \emph{Stops}) na forma de histograma para os 10 nós de maior grau;
 
-\begin{figure}
-\centering
-\includegraphics[width=.9\textwidth]{fig/fig5.png}
-\caption{Centralidade de grau para pontos de ônibus (dez maiores) sem movimentação de ônibus (rede estática).}
-\label{fig:centralidade-grau-estatica}
-\end{figure}
+% \begin{figure}
+% \centering
+% \includegraphics[width=.9\textwidth]{fig/fig5.png}
+% \caption{Centralidade de grau para pontos de ônibus (dez maiores) sem movimentação de ônibus (rede estática).}
+% \label{fig:centralidade-grau-estatica}
+% \end{figure}
 
-A Figura~\ref{fig:centralidade-grau-dinamica} mostra a centralidade de grau considerando as paradas de ônibus nos pontos de ônibus ao longo do dia (rede dinâmica, ou seja, com movimentação de ônibus). São mostrados os resultados para os três pontos de maior centralidade de grau da rede estática (150331, 110026 e 150332). Nota-se uma maior concentração no período da manhã e meio do dia, com diminuição gradual até o final da noite. Ao mesmo tempo, o ponto 150331 atende um elevado número de ônibus no período da manhã e no final da tarde. Essa última característica ocorre em Curitiba por conta do encerramento de atividades em empresas (trabalhadores retornando a suas casas) e estudantes de ensino noturno se deslocando para instituições de ensino.
+% A Figura~\ref{fig:centralidade-grau-dinamica} mostra a centralidade de grau considerando as paradas de ônibus nos pontos de ônibus ao longo do dia (rede dinâmica, ou seja, com movimentação de ônibus). São mostrados os resultados para os três pontos de maior centralidade de grau da rede estática (150331, 110026 e 150332). Nota-se uma maior concentração no período da manhã e meio do dia, com diminuição gradual até o final da noite. Ao mesmo tempo, o ponto 150331 atende um elevado número de ônibus no período da manhã e no final da tarde. Essa última característica ocorre em Curitiba por conta do encerramento de atividades em empresas (trabalhadores retornando a suas casas) e estudantes de ensino noturno se deslocando para instituições de ensino.
 
 %{\bf Resultado 2:} Evolução ao longo do dia do grau dos top 3 nós (\emph{Bus Stop}) anteriores;
 
 
-\begin{figure}
-\centering
-\includegraphics[width=.9\textwidth]{fig/fig7.png}
-\caption{Centralidade de grau para pontos de ônibus (três maiores) com movimentação de ônibus ao longo do dia (rede dinâmica)}
-\label{fig:centralidade-grau-dinamica}
-\end{figure}
+% \begin{figure}
+% \centering
+% \includegraphics[width=.9\textwidth]{fig/fig7.png}
+% \caption{Centralidade de grau para pontos de ônibus (três maiores) com movimentação de ônibus ao longo do dia (rede dinâmica)}
+% \label{fig:centralidade-grau-dinamica}
+% \end{figure}
 
 
-A Figura~\ref{fig:pagerank} mostra o \emph{page rank} considerando apenas a rede estática (pontos de ônibus). Os pontos 150331, 110026 e 110016 são os pontos de maior \emph{page rank}. Estes pontos se localizam, respectivamente, na região sul da cidade (na saída do terminal Pinheirinho), na região que conecta o centro a região nordeste da cidade (na direção de terminais Cabral, Boa Vista e Santa Cândida), nas proximidades do centro da cidade. Todos esses pontos conectam várias linhas que se afastam (pontos 150331 e 110126) ou se aproximam (ponto 11016) de regiões de grande concentração de pontos finais de linhas de ônibus. Ou seja, a importância destes pontos se deve a ligações com outros pontos importantes (pontos ou terminais com grande concentração de linhas).
+% A Figura~\ref{fig:pagerank} mostra o \emph{page rank} considerando apenas a rede estática (pontos de ônibus). Os pontos 150331, 110026 e 110016 são os pontos de maior \emph{page rank}. Estes pontos se localizam, respectivamente, na região sul da cidade (na saída do terminal Pinheirinho), na região que conecta o centro a região nordeste da cidade (na direção de terminais Cabral, Boa Vista e Santa Cândida), nas proximidades do centro da cidade. Todos esses pontos conectam várias linhas que se afastam (pontos 150331 e 110126) ou se aproximam (ponto 11016) de regiões de grande concentração de pontos finais de linhas de ônibus. Ou seja, a importância destes pontos se deve a ligações com outros pontos importantes (pontos ou terminais com grande concentração de linhas).
 
 %Lembrando que esta métrica indica relevância de pontos em relação aos demais pontos que se conectam a eles: são pontos importantes porque outros pontos significativos estão conectados, por linhas de ônibus, a eles.}
 
 %{\bf Resultado 3:} \emph{PageRank} dos nós (\emph{Bus Stop}) para a rede estática (sem \emph{Stops}) na forma de histograma para os 10 nós de maior \emph{rank};
 
-\begin{figure}
-\centering
-\includegraphics[width=.9\textwidth]{fig/fig8.png}
-\caption{\emph{Page rank} para pontos de ônibus (dez maiores) sem movimentação de ônibus (rede estática).}
-\label{fig:pagerank}
-\end{figure}
+% \begin{figure}
+% \centering
+% \includegraphics[width=.9\textwidth]{fig/fig8.png}
+% \caption{\emph{Page rank} para pontos de ônibus (dez maiores) sem movimentação de ônibus (rede estática).}
+% \label{fig:pagerank}
+% \end{figure}
 
 %%%% Comentado por falta de espaço
 
@@ -114,7 +148,7 @@ A Figura~\ref{fig:pagerank} mostra o \emph{page rank} considerando apenas a rede
 %     \end{tabular}
 % \end{table}
 
-As medidas de comprimento das linhas da rede estática de transporte resultaram em 40~m, 38,14~km e 9,43~km para os comprimentos mínimo, máximo e médio (com desvio padrão de 6,5~km) das linhas de ônibus. Já as medidas baseadas em caminhos mínimos entre pontos da rede resultaram em um valor mínimo de 3,6~m, diâmetro da rede (caminho mínimo mais longo) de 55~km e um percurso médio de 14,04~km. Estes caminhos mínimos foram obtidos através dos atributos de distância (\texttt{DISTANCE}) das arestas \texttt{NEXT\_STOP}, gerando uma rede ponderada do sistema de transporte de Curitiba. Note que esse percurso médio pode ou não ser factível com troca de ônibus (baldeação), dependendo da origem e destino do passageiro.
+% As medidas de comprimento das linhas da rede estática de transporte resultaram em 40~m, 38,14~km e 9,43~km para os comprimentos mínimo, máximo e médio (com desvio padrão de 6,5~km) das linhas de ônibus. Já as medidas baseadas em caminhos mínimos entre pontos da rede resultaram em um valor mínimo de 3,6~m, diâmetro da rede (caminho mínimo mais longo) de 55~km e um percurso médio de 14,04~km. Estes caminhos mínimos foram obtidos através dos atributos de distância (\texttt{DISTANCE}) das arestas \texttt{NEXT\_STOP}, gerando uma rede ponderada do sistema de transporte de Curitiba. Note que esse percurso médio pode ou não ser factível com troca de ônibus (baldeação), dependendo da origem e destino do passageiro.
 %Tais métricas são úteis para comparação entre sistemas de transporte de diferentes cidades, e para planejamento do próprio sistema, seja na redução de distância ou no tempo de percurso dos passageiros.
 
 %{\bf Resultado 5:} Tabela de medidas da rede estática: comprimento mínimo, máximo e médio das linhas (em km); média dos caminhos mínimos (de cada nó para todos os outros; diâmetro da rede (caminho mínimo mais longo);
@@ -133,17 +167,17 @@ As medidas de comprimento das linhas da rede estática de transporte resultaram 
 %     \end{tabular}
 % \end{table}
 
-A Figura~\ref{fig:betweeness} mostra a centralidade de intermediação considerando apenas a rede estática (pontos de ônibus). Os pontos 170154, 170085 e 170083 são os pontos de maior centralidade de intermediação. Estes pontos localizam-se na vizinhança do terminal Pinheirinho, localizado na parte sul de Curitiba, comportando-se como um \emph{hub} por onde passam percursos mais curtos entre pontos de ônibus da rede. Note também que esses percursos podem ou não ser factíveis com trocas de ônibus.
+% A Figura~\ref{fig:betweeness} mostra a centralidade de intermediação considerando apenas a rede estática (pontos de ônibus). Os pontos 170154, 170085 e 170083 são os pontos de maior centralidade de intermediação. Estes pontos localizam-se na vizinhança do terminal Pinheirinho, localizado na parte sul de Curitiba, comportando-se como um \emph{hub} por onde passam percursos mais curtos entre pontos de ônibus da rede. Note também que esses percursos podem ou não ser factíveis com trocas de ônibus.
 %Eles refletem indiretamente a movimentação de pessoas dessa região da cidade (basicamente bairros-dormitórios) para trabalharem ou estudarem nas demais partes da cidade, ou seja, a uma relação desses resultados com a evolução urbana da cidade.
 
 %{\bf Resultado 6:} Centralidade de intermediação (\emph{betweenness}) - ver depois.
 
-\begin{figure}
-\centering
-\includegraphics[width=.9\textwidth]{fig/fig9.png}
-\caption{Centralidade de intermediação para pontos de ônibus (dez maiores) sem movimentação de ônibus (rede estática).}
-\label{fig:betweeness}
-\end{figure}
+% \begin{figure}
+% \centering
+% \includegraphics[width=.9\textwidth]{fig/fig9.png}
+% \caption{Centralidade de intermediação para pontos de ônibus (dez maiores) sem movimentação de ônibus (rede estática).}
+% \label{fig:betweeness}
+% \end{figure}
 
 
 % \begin{table}[h]

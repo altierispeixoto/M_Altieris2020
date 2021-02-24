@@ -13,53 +13,45 @@
 %% subdividida em mais capítulos de acordo com a 
 %% especificidade do assunto.
 
+\definecolor{clauciane}{RGB}{204, 0 ,0}
+
 %% Título e rótulo de capítulo (rótulos não devem conter caracteres especiais, acentuados ou cedilha)
 \chapter{Material e Métodos}\label{cap:materialemetodos}
 
-% Deve apresentar o modelo utilizado, a modelagem empregada, as simplificações necessárias, a metodologia e a descrição do método de cálculo utilizado no desenvolvimento da pesquisa para que a mesma possa ser reconstituída. Deve ainda apresentar resultados de amostras e comentários. Deve apresentar a descrição da montagem experimental, metodologia para a obtenção de resultados, análise de erros, amostra de resultados obtidos e comentários. Atenção: Esta parte pode ser subdividida em mais capítulos de acordo com a especificidade do assunto.
+\section{Transporte Coletivo na Cidade de Curitiba}
 
+\textcolor{clauciane}{
+O Instituto de Pesquisa e Planejamento Urbano de Curitiba (IPPUC) descreve que o sistema de transporte coletivo da cidade de Curitiba como sendo composto por linhas urbanas e metropolitanas. Caracterizadas de acordo com sua função e categoria, as linhas de ônibus são diferenciadas por cores, conforme a descrição a seguir.
+\begin{itemize}
+    \item Expressas: constituem o sistema do transporte de massa na cidade. Transitam em vias próprias segregadas (os eixos estruturantes), possuem a cor vermelha e promovem a ligação dos terminais de integração à área central. Os ônibus são biarticulados (270 passageiros) ou articulados (180 passageiros) e suas paradas são constituídas por estações tubo; 
+    \item Alimentadoras: promovem a ligação dos terminais de integração aos bairros locais. Possuem a cor laranja e utilizam veículos com capacidades variadas, dependendo de sua demanda; 
+    \item Interbairros: interligam terminais e bairros de regiões diversas da cidade sem passar pela região central. De cor verde, utilizam veículos de capacidades variadas (110 a 160 passageiros);
+    \item Diretas: constituem linhas auxiliares às expressas e interbairros e promovem ligações pontuais mais distantes, com paradas médias a cada 3 km. Sua cor é prata e receberam o apelido de “ligeirinho”; 
+    \item Troncais: promovem a ligação dos terminais de bairro ao centro. De cor amarela, seus veículos possuem capacidade de 96 a 160 passageiros;
+  \item Intercidades: correspondem à ligação de municípios metropolitanos aos terminais urbanos. De cor laranja, seus veículos comportam 94 passageiros;
+ \item Convencionais: compreendem a ligação das áreas da cidade não atendidas pelos terminais de integração. Seus veículos são de cor amarela e possuem capacidade variável de 40 a 160 passageiros;
+  \item Circular Centro: promove a ligação de pontos do centro cidade. Utiliza-se de micro-ônibus na cor branca; 
+  \item Inter-hospitais: atendem um público que necessita deslocar-se entre hospitais, clínicas e laboratórios próximos à área central da cidade. Com veículos na cor branca, seu layout é específico, com capacidade para 22 passageiros; 
+ \item Madrugueiros: atendem um público que desenvolve suas atividades noturnas, em períodos fora dos horários de operação do sistema; 
+  \item Sites: correspondem às linhas do Sistema Integrado de Ensino Especial e atendem às escolas destinadas a portadores de deficiência (física ou mental). Seus veículos promovem o transporte porta a porta, ou seja, buscam seus usuários em suas casas e os levam às instituições de ensino a que se destinam, passando por um terminal de integração. Todos os veículos são adaptados às condições de seus usuários;
+  \item Aeroporto (executivo): promove a ligação do Aeroporto Internacional Afonso Pena à área central da capital com micro-ônibus na cor prata. 
+\end{itemize}
+}
 
+\textcolor{clauciane}{
+Os terminais de integração correspondem à ligação das linhas que compõem a chamada RIT (Rede Integrada de Transporte) no município de Curitiba e também na região metropolitana. Esses terminais têm o objetivo de atender a população moradora das regiões vizinhas, que chegam até um dos 21 terminais da cidade por meio de linhas alimentadoras. No interior dos terminais é possível escolher qualquer percurso pagando uma tarifa única. Isso faz com que a população diminua gastos com o transporte. Os ônibus da Linha Expresso têm a função de complementar o trajeto até o centro da cidade por canaletas exclusivas. Curitiba conta ainda com linhas interbairros e linhas diretas que têm a finalidade de conectar outros pontos de Curitiba.
+}
 
-Para análise de desempenho da operação do transporte, é necessário incluir informação de tempo no modelo de rede utilizado. Em \cite{hol:12}, uma variedade de termos é apresentada para designar redes cuja estrutura é dependente do tempo: \emph{temporal graphs}, \emph{evolving graphs}, \emph{time-varying graphs}, \emph{time-aggregated graphs}, \emph{time-stamped graphs}, \emph{dynamic networks}, \emph{dynamic graphs}, \emph{dynamical graphs}, entre outros. O objetivo aqui não é discutir estes termos em profundidade, mas apenas destacar a ampla gama de opções para modelagem de redes dinâmicas. Particularmente, o modelo \emph{Time Varying Graph} (TVG) é adotado neste trabalho, tendo sido usado em \cite{sant:09}, além de \cite{tang:10} e \cite{lat:10} como uma sequência discreta e ordenada de grafos (a forma mais intuitiva de representação de um grafo variante no tempo). Um extensão dos conceitos clássicos de grafos para TVGs é apresentada em \cite{lat:12}. Em \cite{wach:19}, é apresentado um modelo TVG do transporte de ônibus de Greater Moncton no Canadá e sua implementação no banco de dados de grafos Neo4j\footnote{http://neo4j.org}. Conforme apontado em \cite{vick:10}, há um interesse crescente em bancos de dados noSQL (\emph{not only} SQL), como o Neo4j, para armazenamento e recuperação de dados com informação dinâmica.
-
-
- 
- 
-%%%% reescrever e utilizar referências bibliográficas aqui >
-% \ric{Aqui já tem muito detalhe para uma introdução}
-
-% O Instituto de Pesquisa e Planejamento Urbano de Curitiba (IPPUC) descreve que o sistema de transporte coletivo da cidade de Curitiba como sendo composto por linhas urbanas e metropolitanas. Caracterizadas de acordo com sua função e categoria, as linhas de ônibus são diferenciadas por cores, conforme a descrição a seguir.
-% \begin{itemize}
-%     \item Expressas: constituem o sistema do transporte de massa na cidade. Transitam em vias próprias segregadas (os eixos estruturantes), possuem a cor vermelha e promovem a ligação dos terminais de integração à área central. Os ônibus são biarticulados (270 passageiros) ou articulados (180 passageiros) e suas paradas são constituídas por estações tubo; 
-%     \item Alimentadoras: promovem a ligação dos terminais de integração aos bairros locais. Possuem a cor laranja e utilizam veículos com capacidades variadas, dependendo de sua demanda; 
-%     \item Interbairros: interligam terminais e bairros de regiões diversas da cidade sem passar pela região central. De cor verde, utilizam veículos de capacidades variadas (110 a 160 passageiros);
-%     \item Diretas: constituem linhas auxiliares às expressas e interbairros e promovem ligações pontuais mais distantes, com paradas médias a cada 3 km. Sua cor é prata e receberam o apelido de “ligeirinho”; 
-%     \item Troncais: promovem a ligação dos terminais de bairro ao centro. De cor amarela, seus veículos possuem capacidade de 96 a 160 passageiros;
-%   \item Intercidades: correspondem à ligação de municípios metropolitanos aos terminais urbanos. De cor laranja, seus veículos comportam 94 passageiros;
-%  \item Convencionais: compreendem a ligação das áreas da cidade não atendidas pelos terminais de integração. Seus veículos são de cor amarela e possuem capacidade variável de 40 a 160 passageiros;
-%   \item Circular Centro: promove a ligação de pontos do centro cidade. Utiliza-se de micro-ônibus na cor branca; 
-%   \item Inter-hospitais: atendem um público que necessita deslocar-se entre hospitais, clínicas e laboratórios próximos à área central da cidade. Com veículos na cor branca, seu layout é específico, com capacidade para 22 passageiros; 
-%  \item Madrugueiros: atendem um público que desenvolve suas atividades noturnas, em períodos fora dos horários de operação do sistema; 
-%   \item Sites: correspondem às linhas do Sistema Integrado de Ensino Especial e atendem às escolas destinadas a portadores de deficiência (física ou mental). Seus veículos promovem o transporte porta a porta, ou seja, buscam seus usuários em suas casas e os levam às instituições de ensino a que se destinam, passando por um terminal de integração. Todos os veículos são adaptados às condições de seus usuários;
-%   \item Aeroporto (executivo): promove a ligação do Aeroporto Internacional Afonso Pena à área central da capital com micro-ônibus na cor prata. 
-% \end{itemize}
-
-
-% Os terminais de integração correspondem à ligação das linhas que compõem a chamada RIT (Rede Integrada de Transporte) no município de Curitiba e também na região metropolitana. Esses terminais têm o objetivo de atender a população moradora das regiões vizinhas, que chegam até um dos 21 terminais da cidade por meio de linhas alimentadoras. No interior dos terminais é possível escolher qualquer percurso pagando uma tarifa única. Isso faz com que a população diminua gastos com o transporte. Os ônibus da Linha Expresso têm a função de complementar o trajeto até o centro da cidade por canaletas exclusivas. Curitiba conta ainda com linhas interbairros e linhas diretas que têm a finalidade de conectar outros pontos de Curitiba.
-
-%  Assim como as linhas do transporte público são divididas em categorias, os terminais também recebem uma classificação. Os terminais  são divididos em: terminais de ponta, terminais intermediários, terminais de bairros, terminais de área central e terminais metropolitanos. Tal divisão, como o nome sugere, indica a posição dos mesmos no sistema de transporte, conforme ilustra a Figura ~\ref{fig:terminais}.
-%  \begin{figure}[!h]
-%  \caption{Localização e classificação dos terminais de ônibus de Curitiba}
-%      \centering
-%      \includegraphics[scale=.95]{./Capitulo1/img/terminais.png}
-%          \label{fig:terminais}
-%      \fonte{Plano de Mobilidade Urbana de Curitiba, IPUCC 2019}
-%  \end{figure}
- 
-%  %% << rever
- 
-% Na organização do artigo, a Seção~\ref{sec:fund} contém conceitos básicos e trabalhos relacionados. A Seção~\ref{sec:met} apresenta o modelo proposto. A Seção~\ref{sec:metr} define as métricas de redes complexas. A Seção~\ref{sec:impl} descreve a plataforma computacional desenvolvida. A Seção~\ref{sec:result} apresenta os resultados obtidos das métricas computadas para o transporte de Curitiba a partir do banco de dados de grafos. Conclusões e trabalhos futuros estão na Seção~\ref{sec:conclu}.
-
+\textcolor{clauciane}{
+Assim como as linhas do transporte público são divididas em categorias, os terminais também recebem uma classificação. Os terminais  são divididos em: terminais de ponta, terminais intermediários, terminais de bairros, terminais de área central e terminais metropolitanos. Tal divisão, como o nome sugere, indica a posição dos mesmos no sistema de transporte, conforme ilustra a Figura ~\ref{fig:terminais}.
+ \begin{figure}[!h]
+ \caption{Localização e classificação dos terminais de ônibus de Curitiba}
+     \centering
+     \includegraphics[scale=.95]{./Capitulo3/img/terminais.png}
+         \label{fig:terminais}
+     \fonte{Plano de Mobilidade Urbana de Curitiba, IPUCC 2019}
+ \end{figure}
+}
 
 \section{Modelo Proposto} \label{sec:met}
 
@@ -83,7 +75,7 @@ Conforme será discutido na Seção~\ref{sec:impl}, a construção do grafo corr
 
 
 
-%\subsection{Vértices}
+\subsection{Vértices}
 
 % Os vértices em roxo (\emph{year}, \emph{month}, \emph{day} e \emph{hour}) representam elementos essencialmente temporais representados. Tais elementos constituem a árvore temporal do grafo.
 
@@ -98,7 +90,7 @@ Conforme será discutido na Seção~\ref{sec:impl}, a construção do grafo corr
 
 % \mar{Coloque uma referência para esse formato WKT.}
 
-%\subsection{Arestas}
+\subsection{Arestas}
 
 % As arestas conectam dois vértices de um grafo. Elas e seus atributos são descritos na Tabela~
 
@@ -145,11 +137,19 @@ Conforme será discutido na Seção~\ref{sec:impl}, a construção do grafo corr
 
 Uma vez que o grafo do sistema de transporte é modelado e armazenado no Neo4j, métricas de redes complexas podem ser computadas para avaliar o comportamento do sistema. Esta seção descreve as métricas utilizadas neste trabalho: i) centralidade de grau; ii) \emph{page rank}; iii) caminho mínimo e diâmetro; iv) centralidade de intermediação. Estas métricas foram escolhidas por permitirem uma avaliação da importância dos vértices na rede (pontos de ônibus), tanto do ponto de vista estático da topologia da rede quanto dinâmico da movimentação dos ônibus, e sua relação com os outros pontos da rede.
 
+\subsection{Centralidade de grau}
+
 Proposto por \cite{free:79}, a {\bf centralidade de grau} é proporcional ao número de arestas (de entrada, ou de saída em grafos direcionados) que se conectam a um determinado vértice. Quanto maior a centralidade de grau de um vértice, maior é o número de conexões com outros vértices. No caso da rede de transporte, a centralidade de grau de um vértice \emph{Bus Stop} é proporcional ao número de paradas de ônibus no respectivo ponto para o caso dinâmico. Isso significa que pontos com elevada centralidade de grau podem corresponder a locais de potencial congestionamento ou de formação de comboios decorrente de uma estratégia de atendimento de demanda elevada. Para o caso estático, a centralidade de grau de um vértice \emph{Bus Stop} é proporcional ao número de linhas de ônibus que passam pelo vértice, já que apenas arestas para outros vértices \emph{Bus Stop} são consideradas.
+
+\subsection{Page rank}
 
 O {\bf \emph{page rank}} foi concebido com o intuito de ranquear páginas (\emph{web sites}) relevantes da \emph{World Wide Web}. A ideia é que o fluxo de navegação dos usuários defina a relevância das páginas ao reforçar suas interconexões (\emph{hyperlinks}). O algoritmo PageRank \cite{brin:98} traduz a ideia intuitiva de que usuários em geral tendem a acessar páginas e navegar pela WWW usando \emph{hiperlinks} até uma certa profundidade. Assim, páginas bem posicionadas no fluxo de navegação são relevantes, pois tendem a ser muito visitadas pelos usuários. No contexto das redes de transporte, um ponto de ônibus com elevado \emph{page rank} pode indicar conexões com outros pontos importantes. Por exemplo, ligações diretas entre terminais de ônibus no caso estático.
 
+\subsection{Caminho mínimo}
+
 O {\bf caminho mínimo} entre dois vértices é o caminho com o menor número de arestas, no caso de arestas não ponderadas. Caso as arestas tenham peso, deve-se considerar a soma dos pesos das arestas do caminho de um vértice a outro. A determinação de caminhos mínimos (considerando todos os pares de vértices de uma rede) é informação significativa para o planejamento urbano e a operação de um sistema de transporte, pois pode induzir no fluxo de pessoas na cidade. Algoritmos de caminho mínimo identificam rotas de conexão entre dois pontos da cidade de forma a minimizar o tempo de percurso necessário no transporte público \cite{Mart:2009, Larson:81}. Uma vez conhecidos os caminhos mínimos de todos os vértices para todos os outros da rede, define-se o {\bf diâmetro da rede} como o caminho mínimo mais longo da rede.
+
+\subsection{Centralidade de intermediação}
 
 Introduzido por \cite{free:77} como uma medida para quantificar o controle de um ser humano sobre a comunicação entre outros seres humanos em uma rede social, a {\bf centralidade de intermediação} (\emph{betweenness centrality}) quantifica o número de caminhos que passam por um determinado vértice. Em outras palavras, a remoção de vértices com elevada centralidade de intermediação podem degradar ou mesmo interromper o fluxo de informação em uma rede. No contexto de sistemas de transporte, estes vértices são potenciais pontos de estrangulamento do sistema. Essa dependência pode ser temporal (ocorre em um intervalo de tempo específico) ou espacial (depende da posição espacial do ponto de ônibus), de acordo com o contexto da análise.
 
@@ -244,9 +244,8 @@ O portal de dados abertos de Curitiba fornece diariamente um \emph{dataset} em f
 A empresa URBS (gestora da Rede Integrada de Transporte Coletivo de Curitiba) define um conjunto de tabelas que contêm informações referentes às linhas de ônibus existentes, seus pontos de parada (que podem atender múltiplas linhas), os itinerários das linhas, os veículos que percorrem essas linhas, o percurso georeferenciado das linhas e o relacionamento entre essas informações. A descrição destas tabelas pode ser encontrada no dicionário de dados disponível no repositório de dados abertos. 
 %\peix{Tais informações também estão disponíveis em forma de web service e pode ser acessado mediante a solicitação de login e senha. O dicionário de dados contendo a descrição das informações disponibilizadas pode ser obtido em \cite{dadosabertos}}
 
-% Parte destes dados, que alimentam o fluxo de transformações descrito na Seção~\ref{subsec:work}, são detalhados nas Tabelas~\ref{tab:linhas}, \ref{tab:pontos_linha}, \ref{tab:tabela_veiculo} e \ref{tab:veiculos} do Apêndice.
+Parte destes dados, que alimentam o fluxo de transformações descrito na Seção~\ref{subsec:work}, são detalhados nas Tabelas~\ref{tab:linhas}, \ref{tab:pontos_linha}, \ref{tab:tabela_veiculo} e \ref{tab:veiculos} do Apêndice.
 
-%\ric{É preciso destacar pelo menos uma ou outra tabela mais importante.}
 
 %\ric{Seria importante caracterizar também a dimensão desta base. Por exemplo, para 1 mês de captura de dados, estamos falando de qual volume de dados? Mostrar em uma tabela: número de linhas, viagens, ônibus, etc?}
 

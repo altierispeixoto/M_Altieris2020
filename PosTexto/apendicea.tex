@@ -3,32 +3,305 @@
 %% Texto ou documento elaborado pelo autor, a fim de complementar sua argumentação, sem prejuízo da unidade nuclear do trabalho.
 
 %% Título e rótulo de apêndice (rótulos não devem conter caracteres especiais, acentuados ou cedilha)
-\chapter{Título do Apêndice A com um Texto Muito Longo que Pode Ocupar Mais de uma Linha}\label{cap:apendicea}
+\chapter{}\label{cap:apendicea}
 
-Quando houver necessidade pode-se apresentar como apêndice documento(s) auxiliar(es) e/ou complementar(es) como: legislação, estatutos, gráficos, tabelas, etc. Os apêndices são enumerados com letras maiúsculas: \autoref{cap:apendicea}, \autoref{cap:apendiceb}, etc.
-
-No \latex\ apêndices são editados como capítulos. O comando \verb|\appendix| faz com que todos os capítulos seguintes sejam considerados apêndices.
-
-Apêndices complementam o texto principal da tese com informações para leitores com especial interesse no tema, devendo ser considerados leitura opcional, ou seja, o entendimento do texto principal da tese não deve exigir a leitura atenta dos apêndices.
-
-Apêndices usualmente contemplam provas de teoremas, deduções de fórmulas matemáticas, diagramas esquemáticos, gráficos e trechos de código. Quanto a este último, código extenso não deve fazer parte da tese, mesmo como apêndice. O ideal é disponibilizar o código na Internet para os interessados em examiná-lo ou utilizá-lo.
 
 %% Título e rótulo de seção (rótulos não devem conter caracteres especiais, acentuados ou cedilha)
-\section{Título da Seção Secundária do Apêndice A}\label{sec:secaoapendicea}
+\section{Apêndice - Tabelas com informações do modelo de grafo e dos dados brutos}\label{sec:secaoapendicea}
 
-Exemplo de seção secundária em apêndice (\autoref{sec:secaoapendicea} do \autoref{cap:apendicea}).
+\begin{table}[htb]
+    \caption{Atributos dos vértices \emph{Trip}: identificam os sentidos das linhas.}
+    \label{tab:vertice_trip}
+    \centering
+    \footnotesize
+    \begin{tabular}{p{2.5cm}p{2.5cm}}
+        \hline
+        Atributo & Descrição\\
+        \hline
+        \texttt{line\_way} & sentido da linha \\
+        \hline  
+    \end{tabular}
+\end{table}
 
-%% Título e rótulo de seção (rótulos não devem conter caracteres especiais, acentuados ou cedilha)
-\subsection{Título da Seção Terciária do Apêndice A}\label{subsec:subsecaoapendicea}
 
-Exemplo de seção terciária em apêndice (\autoref{subsec:subsecaoapendicea} do \autoref{cap:apendicea}).
+\begin{table}[htb]
+    \caption{Atributos dos vértices \emph{Vehicle}: identificam os veículos da frota.}
+    \label{tab:vertice_vehicle}
+    \centering
+    \footnotesize
+    \begin{tabular}{p{2.5cm}p{2.5cm}} 
+        \hline
+        Atributo & Descrição\\
+        \hline
+        \texttt{vehicle} & código do veículo \\
+        \hline  
+    \end{tabular}
+\end{table}
 
-%% Título e rótulo de seção (rótulos não devem conter caracteres especiais, acentuados ou cedilha)
-\subsubsection{Título da seção quaternária do Apêndice A}\label{subsubsec:subsubsecaoapendicea}
+\begin{table}[htb]
+    \caption{Atributos dos vértices \emph{Schedule}:  identificam os itinerários das linhas.}
+    \label{tab:vertice_schedule}
+    \centering
+    \footnotesize
+    \begin{tabular}{p{2.5cm}p{6cm}} 
+        \hline
+        Atributo & Descrição\\
+        \hline
+        \texttt{start\_time} & horário programado de início da viagem \\
+        \texttt{line\_code} & código da linha \\
+        \texttt{time\_table} & tabela horária \\
+        \texttt{start\_point} & código do ponto de partida da viagem \\
+        \texttt{end\_time} & horário programado de término da viagem \\
+        \texttt{line\_way} & sentido da linha \\
+        \texttt{vehicle} & veículo programado para a viagem \\
+        \hline  
+    \end{tabular}
+\end{table}
 
-Exemplo de seção quaternária em apêndice (\autoref{subsubsec:subsubsecaoapendicea} do \autoref{cap:apendicea}).
 
-%% Título e rótulo de seção (rótulos não devem conter caracteres especiais, acentuados ou cedilha)
-\paragraph{Título da seção quinária do Apêndice A}\label{para:paragraphapendicea}
+\begin{table}[!htb]
+    \caption{Atributos dos vértices \emph{Bus Stop}:  identificam os pontos de ônibus.}
+    \label{tab:vertice_busstop}
+    \centering
+    \footnotesize
+    \begin{tabular}{p{2.5cm}p{5cm}} 
+        \hline
+        Atributo & Descrição\\
+        \hline
+        \texttt{name} & nome do ponto de ônibus  \\
+        \texttt{number} & número do ponto de ônibus \\
+        \texttt{geometry} & ponto de ônibus em formato WKT \\
+        \texttt{type} & tipo do ponto de ônibus \\
+        \texttt{latitude} & latitude do ponto \\
+        \texttt{longitude} & longitude do ponto \\
+        \hline
+        %\multicolumn{2}{l}{$^1$ \emph{Well-known text} (WKT) para representar objetos de geometria vetorial.}
+    \end{tabular}
+\end{table}
 
-Exemplo de seção quinária em apêndice (\autoref{para:paragraphapendicea} do \autoref{cap:apendicea}).
+
+\begin{table}[!htb]
+    \caption{Atributos dos vértices \emph{Line}: identificam a linha de ônibus.}
+    \label{tab:vertice_line}
+    \centering
+    \footnotesize
+    \begin{tabular}{p{2.5cm}p{6cm}} 
+    \hline
+    Atributo & Descrição\\
+    \hline
+    \texttt{name}              & nome da linha \\
+    \texttt{card\_only}        & indicador se a linha aceita somente cartão \\
+    \texttt{line\_code}        & código da linha \\
+    \texttt{color}             & cor da linha \\
+    \texttt{category}          & categoria da linha \\
+    \hline
+    \end{tabular}
+\end{table}
+
+
+
+\begin{table}[!htb]
+    \caption{Atributos dos vértices \emph{Stop}: identificam as paradas dos ônibus.}
+    \label{tab:vertice_stop}
+    \centering
+    \footnotesize
+    \begin{tabular}{p{3cm}p{6cm}} 
+        \hline
+        Atributo & Descrição\\
+        \hline
+        \texttt{line\_code} & código da linha \\
+        \texttt{latitude} & latitude da parada  \\
+        \texttt{longitude} & longitude da parada  \\
+        \texttt{event\_timestamp} & \emph{timestamp} do evento de parada do ônibus  \\
+        \texttt{event\_time} & horário do evento de parada do ônibus \\
+        \texttt{vehicle} & veículo que parou \\
+        \hline  
+    \end{tabular}
+\end{table}
+
+\begin{table}[!htb]
+    \caption{Descrição das arestas: significado das conexões e atributos.}
+    \label{tab:arestas}
+    \centering
+    \small
+    \begin{tabular}{ p{5cm}p{8.5cm}} 
+    \hline
+    Rótulo & Descrição\\
+    \hline
+    \texttt{EXISTS\_LINE}         & agrupa as informações da linha de ônibus por dia\\
+    \texttt{EXISTS\_STOP}         & agrupa as informações de paradas do veículo por hora\\
+    \texttt{HAS\_TRIP}       & conecta a linha a várias viagens de ônibus\\
+    \texttt{HAS\_SCHEDULED\_AT}        & conecta a viagem a um horário programado\\
+    \texttt{HAS\_VEHICLE\_SCHEDULED}             & conecta o horário programado ao veículo da viagem\\
+    \texttt{HAS\_STOPPED}          & conecta o ônibus a paradas (veloc. $< 15$ km/h)\\
+    \texttt{STARTS\_ON\_POINT}          & conecta a viagem ao ponto de ônibus inicial \\
+    \texttt{HAS\_BUST\_STOP}          & conecta a viagem aos pontos de ônibus intermediários\\
+    \texttt{ENDS\_ON\_POINT}          & conecta a viagem ao ponto de ônibus final \\
+    \hline
+    \multirow{4}{*}{\texttt{NEXT\_STOP}} & conecta pontos de ônibus consecutivos da viagem: \\
+    %& \texttt{line\_code}: código da linha\\
+    & \texttt{distance}: distância (m) entre pontos de ônibus\\
+    %& \texttt{service\_category}: categoria da linha\\
+    & \texttt{line\_name}: nome da linha\\
+    %& \texttt{card\_only}: somente pagamento com cartão?\\
+    & \texttt{line\_way}: sentido da linha\\
+    %& \texttt{color\_name}: cor da linha\\
+    \hline
+    \multirow{4}{*}{\texttt{MOVED\_TO}}           & conecta a sequência de paradas do veículo: \\
+    & \texttt{delta\_time}: tempo (s) entre paradas\\
+    & \texttt{delta\_distance}: distância (m) entre paradas\\
+    & \texttt{delta\_velocity}: veloc. média (m/s) entre paradas\\
+    \hline
+    \multirow{2}{*}{\texttt{EVENT\_STOP}}        & conecta parada do ônibus a um ponto (a cerca de 20 m): \\
+    &\texttt{line\_way}: sentido da linha antes da parada\\
+    \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[htb]
+    \caption{Tabela \emph{LINHAS}: descreve as linhas da Rede Integrada do Transporte Coletivo de Curitiba.}
+    \centering
+    \begin{tabular}{ p{5cm}p{9cm}} 
+        \hline
+        Atributo & Descrição\\
+        \hline
+         
+        \texttt{COD} & código da linha   \\
+        \texttt{NOME} & nome da linha   \\
+        \texttt{SOMENTE\_CARTAO} & somente pagamento com cartão? \\
+        \texttt{CATEGORIA\_SERVICO} & tipo da linha (expressos que trafegam por linhas exclusivas, interbairros que conectam terminais, etc.)  \\
+        \texttt{NOME\_COR} & cor da linha: identidade visual que facilita a identificação dos ônibus por parte dos usuários \\ 
+        \hline
+        \end{tabular}
+    \label{tab:linhas}
+\end{table}
+
+ 
+\begin{table}[htb]
+    \caption{Tabela \emph{PONTOS\_LINHA}: descreve os pontos de ônibus do sistema de transporte.}
+    \centering
+    \begin{tabular}{ p{5cm}p{9cm}} 
+        \hline
+        Atributo & Descrição\\
+        \hline
+        \texttt{NOME} & nome do ponto \\
+        \texttt{NUM} & identificador numérico do ponto \\
+        \texttt{LAT} & latitude do ponto \\
+        \texttt{LON} & longitude do ponto \\
+        \texttt{SEQ} & sequência do ponto na linha\\
+        \texttt{GRUPO} & caracteriza pontos localizados em terminais \\
+        \texttt{SENTIDO} & sentido do ponto \\
+        \texttt{TIPO} & tipo do ponto: com cobertura, poste, etc. \\
+        \texttt{ITINERARY\_ID} & identificador de itinerário \\
+        \texttt{COD} & código do ponto \\
+        \hline 
+    \end{tabular}
+    \label{tab:pontos_linha}
+\end{table}
+
+\begin{table}[h]
+\caption{Tabela \emph{TABELA\_LINHA}: relacionamento entre linhas, pontos de parada e tabela-horária.}
+    \centering
+    \begin{tabular}{ p{5cm}p{9cm}} 
+        \hline
+        Atributo & Descrição\\
+        \hline
+        \texttt{HORA}   & hora de parada \\
+        \texttt{PONTO}  & nome do ponto  \\
+        \texttt{DIA}    & tipo do dia: útil, sábado, domingo, ou feriado \\
+        \texttt{NUM}    & número do ponto \\
+        \texttt{TABELA} & número da tabela horária  \\
+        \texttt{ADAPT}  & ponto adaptado para pessoas com deficiência? \\
+        \texttt{COD} & código da linha \\
+        \hline 
+    \end{tabular}
+    \label{tab:tabela_linha}
+\end{table}
+
+\begin{table}[htb]
+    \caption{Tabela \emph{TABELA\_VEICULO}: relacionamento adicional, incorporando veículos às tabelas-horárias e pontos de parada.}
+    \centering
+    \begin{tabular}{ p{5cm}p{9cm}} 
+        \hline
+        Atributo & Descrição\\
+        \hline
+        \texttt{COD\_LINHA}  & código da linha \\
+        \texttt{NOME\_LINHA} & nome da linha \\
+        \texttt{VEICULO}     & código do veículo \\
+        \texttt{HORARIO}     & hora de parada \\
+        \texttt{TABELA}      & número da tabela horária  \\
+        \texttt{COD\_PONTO}  & código do ponto \\
+        \hline 
+    \end{tabular}
+    \label{tab:tabela_veiculo}
+\end{table}
+
+\begin{table}[h]
+    \caption{Tabela \emph{TRECHOS\_ITINERARIOS}: relacionamento entre linhas, empresas operadoras do serviço de transporte, itinerários e pontos de parada.}
+    \centering
+    \begin{tabular}{ p{5.2cm}p{8.8cm} } 
+        \hline
+        Atributo & Descrição\\
+        \hline
+        \texttt{COD\_LINHA} & código da linha  \\
+        \texttt{NOME\_LINHA} & nome da linha  \\
+        \texttt{COD\_CATEGORIA} & código da categoria do serviço \\
+        \texttt{NOME\_CATEGORIA} &  nome da categoria do serviço \\
+        \texttt{COD\_EMPRESA} & código da empresa operadora \\
+        \texttt{NOME\_EMPRESA} & nome da empresa operadora \\
+        \texttt{COD\_PTO\_PARADA\_TH} & código do ponto na tabela horário \\
+        \texttt{NOME\_PTO\_PARADA\_TH} & nome do ponto na tabela horário \\
+        \texttt{NOME\_PTO\_ABREVIADO} & nome abreviado do ponto \\
+        \texttt{SEQ\_PTO\_ITI\_TH} & número sequencial do ponto no itinerário \\
+        \texttt{COD\_ITINERARIO} & código do itinerário \\
+        \texttt{NOME\_ITINERARIO} &  nome do itinerário \\
+        \texttt{PTO\_ESPECIAL} & existe adaptação (elevador)? \\
+        \texttt{COD\_PTO\_TRECHO\_A} &   código do ponto do início do trecho \\
+        \texttt{SEQ\_PONTO\_TRECHO\_A} &  número sequencial do ponto do início \\
+        \texttt{COD\_PTO\_TRECHO\_B} & código do ponto de término do trecho \\
+        \texttt{SEQ\_PONTO\_TRECHO\_B} & número sequencial do término do trecho \\
+        \texttt{EXTENSAO\_TRECHO\_A\_ATE\_B} &  distância de A até B \\
+        \texttt{TIPO\_TRECHO} & tipo do trecho \\
+        \texttt{STOP\_CODE} & código único do ponto de ônibus \\
+        \texttt{STOP\_NAME} & nome único do ponto de ônibus \\
+        \texttt{CODIGO\_URBS} & código interno (URBS) do ponto de ônibus \\
+        \hline  
+    \end{tabular}
+    \label{tab:trechos_itinerarios}
+\end{table}
+
+
+\begin{table}[htb]
+    \caption{Tabela \emph{VEICULOS}: identifica todos os veículos que atendem o sistema, bem como sua geolocalização. Também relaciona o veiculo com a linha que atende em um determinado instante de tempo.}
+    \centering
+    \begin{tabular}{ p{5cm}p{9cm}} 
+        \hline
+        Atributo & Descrição\\
+        \hline
+        \texttt{VEIC} & código do veículo \\
+        \texttt{LAT} & latitude \\
+        \texttt{LON} & longitude  \\
+        \texttt{DTHR} & data e hora do evento de geolocalização \\
+        \texttt{COD\_LINHA} & código da linha \\
+        \hline  
+    \end{tabular}
+    \label{tab:veiculos}
+\end{table}
+
+
+% Exemplo de seção secundária em apêndice (\autoref{sec:secaoapendicea} do \autoref{cap:apendicea}).
+
+% %% Título e rótulo de seção (rótulos não devem conter caracteres especiais, acentuados ou cedilha)
+% \subsection{Título da Seção Terciária do Apêndice A}\label{subsec:subsecaoapendicea}
+
+% Exemplo de seção terciária em apêndice (\autoref{subsec:subsecaoapendicea} do \autoref{cap:apendicea}).
+
+% %% Título e rótulo de seção (rótulos não devem conter caracteres especiais, acentuados ou cedilha)
+% \subsubsection{Título da seção quaternária do Apêndice A}\label{subsubsec:subsubsecaoapendicea}
+
+% Exemplo de seção quaternária em apêndice (\autoref{subsubsec:subsubsecaoapendicea} do \autoref{cap:apendicea}).
+
+% %% Título e rótulo de seção (rótulos não devem conter caracteres especiais, acentuados ou cedilha)
+% \paragraph{Título da seção quinária do Apêndice A}\label{para:paragraphapendicea}
+
+% Exemplo de seção quinária em apêndice (\autoref{para:paragraphapendicea} do \autoref{cap:apendicea}).

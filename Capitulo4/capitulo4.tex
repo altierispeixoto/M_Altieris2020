@@ -13,6 +13,15 @@
 
 % Deve descrever detalhadamente os dados obtidos pelo autor. Normalmente são incluídas ilustrações como: quadros, tabelas, gráficos, etc. Deve efetuar a comparação dos dados obtidos e/ou resultados, com aqueles descritos na revisão de literatura, incluindo os comentários sobre os estudos de outros autores.
 
+\ric{Vamos organizar o capítulo da seguinte forma:}
+
+\begin{enumerate}
+    \item Análise exploratória: resultados estatísticos (visualizações) que permitam caracterizar de forma geral a base de dados utilizada;
+    \item Operação da rede de transporte: resultados obtidos do uso de grafos temporais na caracterização da operação atual da rede de transporte de Curitiba;
+    \item Integração temporal: resultados do estudo de uma integração temporal na rede de transporte de Curitiba
+\end{enumerate}
+
+\section{Análise exploratória}
 
 Os resultados foram obtidos para o período de  01/03/2019 a 30/06/2019, tendo sido coletados 33 Gigabytes de dados, com 293.390.175 registros de geolocalização dos 1708 ônibus em operação. Este volume de dados gerou, após a transformação para o banco de dados de grafo do Neo4j, 26.869.679 vértices e 93.082.943 arestas.
 
@@ -34,6 +43,11 @@ A Tabela~\ref{tab:neo} mostra estatísticas do banco de dados construído no Neo
 \end{table}
 
 
+
+\section{Operação da rede de transporte}
+
+\ric{Resultados que podem ser derivados da modelagem proposta usando grafos temporais. Mais ou menos na linha do artigo do Courb.}
+
 \begin{figure}
 \centering
 \includegraphics[width=.9\textwidth]{Capitulo4/img/eventos_proximidade.png}
@@ -41,6 +55,8 @@ A Tabela~\ref{tab:neo} mostra estatísticas do banco de dados construído no Neo
 \label{fig:eventos-de-proximidade}
 \end{figure}
 
+
+\ric{Figuras de centralidade parecem ser melhor apresentadas em mapas, onde se pode ver a localização dos pontos considerados.}
 
 \begin{figure}
 \centering
@@ -64,9 +80,22 @@ A Tabela~\ref{tab:neo} mostra estatísticas do banco de dados construído no Neo
 \label{fig:eventos-de-proximidade}
 \end{figure}
 
-\section{Terminal Virtual}
 
 
+% Integração Temporal
+% Os passageiros do transporte coletivo de Curitiba têm diferentes tipos de integração temporal para trocar de linha de ônibus ou de estação-tubo sem precisar pagar nova tarifa. Em 2017 foram mais de 600 mil usos nas integrações temporais das linhas urbanas da capital. Se contar o acesso às Ruas da Cidadania, esse atendimento sobe para quase um milhão.
+
+% A proposta das integrações temporais no transporte é oferecer uma alternativa aos passageiros que ainda não têm acesso à integração no sistema. No transporte da capital, uma pessoa embarca num ponto e percorre todos os 21 terminais e as mais de 300 estações-tubo pagando apenas uma tarifa. Isso ocorre em 92\% da rede de transporte da cidade. A integração temporal busca complementar gradativamente essa rede.
+
+% O único critério para usar a integração temporal é ter o cartão-transporte da URBS, que permite também o acesso às Ruas da Cidadania, onde o passageiro economiza uma tarifa no retorno ao ônibus. Veja quais são os tipos de integrações possíveis:
+
+% Para o usuário ter direito à integração temporal, o mesmo deve utilizar o cartão-transporte da URBS em um dos validadores do Sistema de Transporte Coletivo de Curitiba (Ônibus, Terminal, Estação-Tubo), realizando assim um debito de passagem do seu Cartão Transporte e conforme as regras abaixo.
+
+% OBS.: apenas os cartões-transporte nas modalidades Usuário e Estudante realizam integração temporal. Com o cartão-transporte Avulso não há a possibilidade de uso do benefício da integração temporal.
+
+
+ 
+ 
 %\ric{Cada resultado precisa ser explicado.}
 
 % A Figura~\ref{fig:centralidade-grau-estatica} mostra a centralidade de grau considerando apenas os pontos de ônibus (rede estática, ou seja, sem movimentação de ônibus). Os pontos 150331, 110026 e 150332 são os pontos de maior centralidade de grau, ou seja, conectam um número maior de pontos de ônibus devido a um maior número de linhas que passam por estes pontos. Em Curitiba, enquanto que o segundo ponto localiza-se na região central da cidade, os dois outros pontos (150331 e 150332) localizam-se na região sul da cidade. Em todos os casos, são pontos para onde convergem várias linhas de ônibus antes de chegarem a terminais importantes da cidade (terminal Pinheirinho ao sul, nos caso dos pontos 150331 e 150332, e praça Rui Barbosa no centro, no caso do ponto 110026). 
@@ -264,4 +293,34 @@ A Tabela~\ref{tab:neo} mostra estatísticas do banco de dados construído no Neo
 % \caption{nº de veículos no dia 02/05/2019}
 % \label{fig:veiculos}
 % \end{figure}
- 
+
+
+
+\section{Integração temporal}
+
+%%%%%% O que está abaixo não necessariamente permanecerá no texto - por enquanto é apenas uma referência para a seção
+
+\ric{Resumo da metodologia}
+
+\begin{enumerate}
+    \item Para cada ponto de ônibus, obtém-se uma série temporal com o número de eventos (paradas de ônibus) em uma janela deslizante de 10 min, calculada minuto a minuto ao longo do período considerado (0 a 24 horas?);
+    \item Identificam-se os 10 pontos (centroides) mais bem servidos em termos do número de eventos agregados para todos o período considerado;
+    \item Para cada centroide, selecionam-se os pontos a uma distância de 600~m do centroide e gera-se uma matriz de correlação entre as séries temporais de cada ponto desta região;
+    \item Identificam-se os pontos de maior correlação (com o centroide?);
+    \item Estes pontos serão os candidatos para estabelecer integração temporal.
+\end{enumerate}
+
+\ric{Resultados a serem apresentados sobre o levantamento de regiões candidatas para integração temporal:}
+
+\begin{itemize}
+    \item Visualização das regiões estudadas (centroides) no mapa de Curitiba;
+    \item Número de pontos e raio médio destas regiões, ou seja, os pontos selecionados estão em um raio muito menor do que 600~m?
+    \item Quantas linhas de ônibus servem cada região? Elas se conectam em algum outro ponto da rede, ou seja, existe um terminal ou estação tubo onde a transferência possa ser realizada ser pagamento de nova tarifa?
+    \item Dar especial atenção aos centroides que "integram" várias linhas (Alferes Poli?; Centro Cívico?); estes centroides, além de possuírem serviços "sincronizados" (precisa definir o que seria isso), permitem criar novas rotas;
+\end{itemize}
+
+\ric{Resultados a serem apresentados sobre o impacto na rede da implementação da integração temporal para as regiões selecionadas:}
+
+\begin{itemize}
+    \item Tem impacto na métrica de redes complexas (centralidade de proximidade ou intermediação, diâmetro)?
+\end{itemize}

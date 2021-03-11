@@ -78,7 +78,7 @@
 %% -- Opções do pacote babel (hifenização) -- % 
   %french,%% Idioma adicional para hifenização (suporte parcial)
   %spanish,%% Idioma adicional para hifenização (suporte parcial)
-  english,%% Idioma adicional para hifenização  (colocar em último para doc. em inglês)
+  %english,%% Idioma adicional para hifenização  (colocar em último para doc. em inglês)
   brazil,%% Idioma principal do documento (último da lista)    
 ]{utfprct}%% Classe utfprct
 
@@ -114,6 +114,10 @@
 
 %%%% By Luders
 \newcommand{\ric}[1]{\textcolor{blue}{#1}}
+%\usepackage{subfig}
+
+%%%% By Alt
+\newcommand{\alt}[1]{\textcolor{green}{#1}}
 
 % Refinamento tipográfico: diminui badboxes
 \usepackage{microtype}%
@@ -389,7 +393,7 @@
 %% Arquivos de referências
 %%
 \arquivosdereferencias{%% Arquivos bibtex sem a extensão .bib e separados por vírgula - Não comente esta linha
-  ./PosTexto/exemplos-referencias,%% Arquivo de referências - Comente para remover este item (chktex 26 supress warn.)
+  %./PosTexto/exemplos-referencias,%% Arquivo de referências - Comente para remover este item (chktex 26 supress warn.)
   ./PosTexto/referencias%% Arquivo de referências - Comente para remover este item (chktex 26 - supress warn.)
 }%% Não comente esta linha
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

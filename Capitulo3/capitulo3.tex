@@ -14,9 +14,12 @@
 %% especificidade do assunto.
 
 %% Título e rótulo de capítulo (rótulos não devem conter caracteres especiais, acentuados ou cedilha)
-\chapter{Material e Métodos}\label{cap:materialemetodos}
+\chapter{Metodologia}
+\label{cap:materialemetodos}
 
-\section{Transporte Coletivo na Cidade de Curitiba}
+\section{Transporte coletivo de ônibus}
+
+\ric{Dar ênfase no problema. Quais são os elementos principais do transporte de ônibus a ser modelado neste trabalho. Depois pode exemplicar com o transporte de Curitiba.}
 
 \definecolor{clauciane}{RGB}{204, 0 ,0}
 
@@ -65,7 +68,8 @@ Os terminais, assim como as linhas do transporte público são divididas em cate
      \fonte{Plano de Mobilidade Urbana de Curitiba, IPUCC 2019}
  \end{figure}
 
-\section{Modelo Proposto} \label{sec:met}
+\section{Um modelo do transporte de ônibus via grafo temporal} \label{sec:met}
+%\section{Modelo Proposto} \label{sec:met}
 
 
 O modelo proposto para o transporte público de Curitiba é mostrado na Figura~\ref{fig:model}. Este modelo tem por base o modelo de~\cite{wach:19}.
@@ -292,85 +296,7 @@ As arestas conectam dois vértices de um grafo. Elas e seus atributos são descr
 
 
 
-\section{Métricas de Redes Complexas} \label{sec:metr}
 
-
-Uma vez que o grafo do sistema de transporte descrito na seção anterior é modelado e armazenado no Neo4j, métricas de redes complexas podem ser computadas para avaliar o comportamento do sistema. 
-Tais métricas permitem uma avaliação da importância dos vértices na rede (pontos de ônibus), tanto do ponto de vista estático da topologia da rede quanto dinâmico da movimentação dos ônibus, e sua relação com os outros pontos da rede.
-Esta seção descreve as métricas utilizadas neste trabalho: 
-
-\subsection{Centralidade de grau}
-
-
-Proposto por~\cite{free:79}, a {\bf centralidade de grau} é proporcional ao número de arestas (de entrada, ou de saída em grafos direcionados) que se conectam a um determinado vértice. Quanto maior a centralidade de grau de um vértice, maior é o número de conexões com outros vértices.
-
-No caso da rede de transporte, na perspectiva de dinamicidade da rede através da interatividade de veículos com seus respectivos pontos de ônibus, a centralidade de grau de um vértice \emph{BusStop} é proporcional ao número de paradas de ônibus no respectivo ponto. Isso pode significar que pontos com elevada centralidade de grau podem corresponder a locais de potencial congestionamento ou de formação de comboios decorrente de uma estratégia de atendimento de demanda elevada. 
-
-Na perspectiva da rede estática, isto é, isolando-se somente os pontos de ônibus e suas conexões, a centralidade de grau de um vértice \emph{BusStop} é proporcional ao número de linhas de ônibus que passam pelo vértice, já que apenas arestas para outros vértices \emph{BusStop} são consideradas. Um ponto ponto de ônibus com grande número de conexões apresenta uma grande oferta de linhas.
-
-\subsection{Centralidade de intermediação}
-
-
-Introduzido por \cite{free:77} como uma medida para quantificar o controle de um ser humano sobre a comunicação entre outros seres humanos em uma rede social, a {\bf centralidade de intermediação} (\emph{betweenness centrality}) quantifica quão importante um vértice (ou uma aresta) é na definição dos caminhos possíveis entre vários (ou todos) os pares de vértices de uma rede. Isso permite calcular qual a capacidade da rede se ``recuperar'' em caso de remoção de um ou mais vértices. Também é importante, pois auxilia na identificação de vértices que atuam como ``intermediários de serviços'' na rede.
-
-Em outras palavras, a remoção de vértices com elevada centralidade de intermediação podem degradar ou mesmo interromper o fluxo de informação em uma rede. 
-
-Para um vértice, a centralidade de intermediação é definida pela proporção dos caminhos que empregam um determinado vértice em relação a todos os caminhos existentes, ou seja:
-
- \begin{equation}
-     B(u) = \sum_{s \neq u \neq t }^{} p(u) / p,
- \end{equation} 
-na qual:
-
- \begin{itemize}
- \item $u$: é um vértice.
- \item $p$: é o número total de caminhos entre os vértices $s$ e $t$.
- \item $p(u)$: é o número de caminhos entre os vértices $s$ e $t$ que passam pelo vértice $u$.
-\end{itemize}  
-
-No contexto de sistemas de transporte, vértices com significativo $B$ são potenciais pontos de estrangulamento do sistema, dada a dependência que os caminhos possíveis desse sistema têm desse vértice. Essa dependência pode ser temporal (ocorre em um intervalo de tempo específico) ou espacial (depende da posição espacial do ponto de ônibus), de acordo com o contexto de análise.
-
-\subsection{Page rank}
-
-
-O {\bf \emph{page rank}} foi concebido com o intuito de ranquear páginas (\emph{web sites}) relevantes da \emph{World Wide Web}. 
-
-Usando o conceito presente em cadeias de Markov e/ou difusão em redes complexas, pode-se determinar os vértices mais significativos do ponto de vista de fluxos existentes em uma rede, quando o regime estacionário é atingido. Pode-se traduzir esse regime estacionário como a tendência de um usuário aleatório sempre chegar em uma determinada página, ou os dados em redes de comunicação sempre trafegarem por um determinado roteador.
-
-A ideia é que o fluxo de navegação dos usuários defina a relevância das páginas ao reforçar suas interconexões (\emph{hyperlinks}). O algoritmo PageRank \cite{brin:98} traduz a ideia intuitiva de que usuários em geral tendem a acessar páginas e navegar pela WWW usando \emph{hiperlinks} até uma certa profundidade. Assim, páginas bem posicionadas no fluxo de navegação são relevantes, pois tendem a ser muito visitadas pelos usuários. 
-No contexto das redes de transporte, um ponto de ônibus com elevado \emph{page rank} pode indicar conexões com outros pontos importantes. Por exemplo, ligações diretas entre terminais de ônibus no caso estático.
-
-
-\subsection{Caminho mínimo}
-
-O {\bf caminho mínimo} entre dois vértices é o caminho com o menor número de arestas, no caso de arestas não ponderadas. 
-Define-se caminho entre dois vértices quaisquer como a sequência de vértices, ligados dois a dois por arestas, que deve ser percorrida para conectá-los. As arestas podem ser ponderadas ou não, definindo características das ligações entre dois vértice e afetando a definição do caminho. A partir dos caminhos existentes entre dois nós quaisquer, define-se como caminho mais curto aquele cujo ``esforço'' exigido para percorrê-lo é o menor dentre os caminhos existentes.
-
-Caso as arestas sejam ponderadas, deve-se considerar a soma dos pesos das arestas do caminho de um vértice a outro. A determinação de caminhos mínimos (considerando todos os pares de vértices de uma rede) é informação significativa para o planejamento urbano e a operação de um sistema de transporte, pois pode induzir no fluxo de pessoas na cidade. Algoritmos de caminho mínimo identificam rotas de conexão entre dois pontos da cidade de forma a minimizar o tempo de percurso necessário no transporte público \cite{Mart:2009, Larson:81}. Uma vez conhecidos os caminhos mínimos de todos os vértices para todos os outros da rede, define-se o {\bf diâmetro da rede} como o caminho mínimo mais longo da rede.
-
-% \subsection{Conectividade}
-
-% \textcolor{courb2020}{
-% Conectividade é um propriedade que indica existe pelo menos um caminho entre todos os pares de vértices de uma rede. Caso não haja, existem sub-grafos isolados dentro da rede.
-% No contexto das redes TVGs aplicadas ao sistema de transporte público, a evolução temporal desse sistema pode ou não gerar intervalos de tempo nos quais parte da rede perde conectividade com o restante da rede. Essa mudança na conectividade da rede pode ser um comportamento estrutural (ou seja, é um fenômeno recorrente da rede) ou uma anomalia (um fenômeno aleatório, como um acidente que bloqueie a passagem de veículos por uma via pública).
-% }
-
-\subsection{Diâmetro e densidade de rede}
-
-A partir do resultado do cálculo de caminhos e caminhos mínimos pode ser identificado o diâmetro (geodésico) de uma rede. O diâmetro de uma rede é o caminho mínimo mais longo dessa rede, ou seja, a distância entre dois vértices cujo caminho mínimo é o mais longo a ser percorrido. 
-
-Naturalmente, o contexto de análise pode implicar que o diâmetro possa ser calculado a partir de atributos dos vértices e/ou arestas, como tempo exigido para percorrer dada par de vértice conectado, ou a distância entre esses pares de vértices conectados.
-A densidade da rede mede a similaridade entre a rede e um grafo completo (grafo em que há um aresta para todos os seus pares de vértices) e pode ser definida como:
-
- \begin{equation}
-     D = \mid E \mid / \mid N \mid ( \mid N \mid -1),
- \end{equation} 
-na qual:
-
- \begin{itemize}
- \item $N$: é o número total de vértices.
- \item $E$: é o número total de arestas.
-\end{itemize}  
 
 
 \section{Plataforma Computacional} \label{sec:impl}
@@ -380,38 +306,142 @@ A plataforma computacional desenvolvida gera um banco de dados de grafo no Neo4j
 
 \subsection{Dataset}
 
-\textcolor{courb2020}{
+ 
 O portal de dados abertos de Curitiba fornece diariamente um \emph{dataset} em formato JSON (JavaScript Object Notation) com informações sobre o transporte coletivo da cidade. Conforme mencionado anteriormente, o transporte opera em média com uma frota de 1.410 ônibus que atende cerca de 1.389.731 passageiros por dia com 251 linhas de ônibus, 329 estações e 21 terminais.
-}
 
-\textcolor{courb2020}{
 A empresa URBS (gestora da Rede Integrada de Transporte Coletivo de Curitiba) define um conjunto de tabelas que contêm informações referentes às linhas de ônibus existentes, seus pontos de parada (que podem atender múltiplas linhas), os itinerários das linhas, os veículos que percorrem essas linhas, o percurso georeferenciado das linhas e o relacionamento entre essas informações. A descrição destas tabelas pode ser encontrada no dicionário de dados disponível no repositório de dados abertos. 
-}
-%\peix{Tais informações também estão disponíveis em forma de web service e pode ser acessado mediante a solicitação de login e senha. O dicionário de dados contendo a descrição das informações disponibilizadas pode ser obtido em \cite{dadosabertos}}
 
-\textcolor{courb2020}{
-Parte destes dados, que alimentam o fluxo de transformações descrito na Seção~\ref{subsec:work}, são detalhados nas Tabelas~\ref{tab:linhas}, \ref{tab:pontos_linha}, \ref{tab:tabela_veiculo} e \ref{tab:veiculos} do Apêndice.
-}
+Estes dados, que alimentam o fluxo de transformações descrito na Seção~\ref{subsec:work}, são detalhados nas Tabelas~\ref{tab:linhas}, \ref{tab:pontos_linha},  \ref{tab:tabela_linha},  \ref{tab:tabela_veiculo} e \ref{tab:trechos_itinerarios} e  \ref{tab:veiculos}.
 
-%\ric{Seria importante caracterizar também a dimensão desta base. Por exemplo, para 1 mês de captura de dados, estamos falando de qual volume de dados? Mostrar em uma tabela: número de linhas, viagens, ônibus, etc?}
+\begin{table}[htb]
+    \caption{Tabela \emph{LINHAS}: descreve as linhas da Rede Integrada do Transporte Coletivo de Curitiba.}
+    \centering
+    \begin{tabular}{ p{5cm}p{9cm}} 
+        \hline
+        Atributo & Descrição\\
+        \hline
+         
+        \texttt{COD} & código da linha   \\
+        \texttt{NOME} & nome da linha   \\
+        \texttt{SOMENTE\_CARTAO} & somente pagamento com cartão? \\
+        \texttt{CATEGORIA\_SERVICO} & tipo da linha (expressos que trafegam por linhas exclusivas, interbairros que conectam terminais, etc.)  \\
+        \texttt{NOME\_COR} & cor da linha: identidade visual que facilita a identificação dos ônibus por parte dos usuários \\ 
+        \hline
+        \end{tabular}
+    \label{tab:linhas}
+\end{table}
+
+ 
+\begin{table}[htb]
+    \caption{Tabela \emph{PONTOS\_LINHA}: descreve os pontos de ônibus do sistema de transporte.}
+    \centering
+    \begin{tabular}{ p{5cm}p{9cm}} 
+        \hline
+        Atributo & Descrição\\
+        \hline
+        \texttt{NOME} & nome do ponto \\
+        \texttt{NUM} & identificador numérico do ponto \\
+        \texttt{LAT} & latitude do ponto \\
+        \texttt{LON} & longitude do ponto \\
+        \texttt{SEQ} & sequência do ponto na linha\\
+        \texttt{GRUPO} & caracteriza pontos localizados em terminais \\
+        \texttt{SENTIDO} & sentido do ponto \\
+        \texttt{TIPO} & tipo do ponto: com cobertura, poste, etc. \\
+        \texttt{ITINERARY\_ID} & identificador de itinerário \\
+        \texttt{COD} & código do ponto \\
+        \hline 
+    \end{tabular}
+    \label{tab:pontos_linha}
+\end{table}
+
+\begin{table}[h]
+\caption{Tabela \emph{TABELA\_LINHA}: relacionamento entre linhas, pontos de parada e tabela-horária.}
+    \centering
+    \begin{tabular}{ p{5cm}p{9cm}} 
+        \hline
+        Atributo & Descrição\\
+        \hline
+        \texttt{HORA}   & hora de parada \\
+        \texttt{PONTO}  & nome do ponto  \\
+        \texttt{DIA}    & tipo do dia: útil, sábado, domingo, ou feriado \\
+        \texttt{NUM}    & número do ponto \\
+        \texttt{TABELA} & número da tabela horária  \\
+        \texttt{ADAPT}  & ponto adaptado para pessoas com deficiência? \\
+        \texttt{COD} & código da linha \\
+        \hline 
+    \end{tabular}
+    \label{tab:tabela_linha}
+\end{table}
+
+\begin{table}[htb]
+    \caption{Tabela \emph{TABELA\_VEICULO}: relacionamento adicional, incorporando veículos às tabelas-horárias e pontos de parada.}
+    \centering
+    \begin{tabular}{ p{5cm}p{9cm}} 
+        \hline
+        Atributo & Descrição\\
+        \hline
+        \texttt{COD\_LINHA}  & código da linha \\
+        \texttt{NOME\_LINHA} & nome da linha \\
+        \texttt{VEICULO}     & código do veículo \\
+        \texttt{HORARIO}     & hora de parada \\
+        \texttt{TABELA}      & número da tabela horária  \\
+        \texttt{COD\_PONTO}  & código do ponto \\
+        \hline 
+    \end{tabular}
+    \label{tab:tabela_veiculo}
+\end{table}
+
+\begin{table}[h]
+    \caption{Tabela \emph{TRECHOS\_ITINERARIOS}: relacionamento entre linhas, empresas operadoras do serviço de transporte, itinerários e pontos de parada.}
+    \centering
+    \begin{tabular}{ p{5.2cm}p{8.8cm} } 
+        \hline
+        Atributo & Descrição\\
+        \hline
+        \texttt{COD\_LINHA} & código da linha  \\
+        \texttt{NOME\_LINHA} & nome da linha  \\
+        \texttt{COD\_CATEGORIA} & código da categoria do serviço \\
+        \texttt{NOME\_CATEGORIA} &  nome da categoria do serviço \\
+        \texttt{COD\_EMPRESA} & código da empresa operadora \\
+        \texttt{NOME\_EMPRESA} & nome da empresa operadora \\
+        \texttt{COD\_PTO\_PARADA\_TH} & código do ponto na tabela horário \\
+        \texttt{NOME\_PTO\_PARADA\_TH} & nome do ponto na tabela horário \\
+        \texttt{NOME\_PTO\_ABREVIADO} & nome abreviado do ponto \\
+        \texttt{SEQ\_PTO\_ITI\_TH} & número sequencial do ponto no itinerário \\
+        \texttt{COD\_ITINERARIO} & código do itinerário \\
+        \texttt{NOME\_ITINERARIO} &  nome do itinerário \\
+        \texttt{PTO\_ESPECIAL} & existe adaptação (elevador)? \\
+        \texttt{COD\_PTO\_TRECHO\_A} &   código do ponto do início do trecho \\
+        \texttt{SEQ\_PONTO\_TRECHO\_A} &  número sequencial do ponto do início \\
+        \texttt{COD\_PTO\_TRECHO\_B} & código do ponto de término do trecho \\
+        \texttt{SEQ\_PONTO\_TRECHO\_B} & número sequencial do término do trecho \\
+        \texttt{EXTENSAO\_TRECHO\_A\_ATE\_B} &  distância de A até B \\
+        \texttt{TIPO\_TRECHO} & tipo do trecho \\
+        \texttt{STOP\_CODE} & código único do ponto de ônibus \\
+        \texttt{STOP\_NAME} & nome único do ponto de ônibus \\
+        \texttt{CODIGO\_URBS} & código interno (URBS) do ponto de ônibus \\
+        \hline  
+    \end{tabular}
+    \label{tab:trechos_itinerarios}
+\end{table}
 
 
-% \ric{A Tabela~\ref{tab:data} mostra estatísticas do \emph{dataset} utilizado, com informações sobre o transporte coletivo de Curitiba coletados durante um mês de operação.}
-
-% \begin{table}[h]
-%     \caption{Estatísticas do \emph{dataset} do transporte de Curitiba para 1 mês de operação \mar{(qual mês/ano?)}.}
-%     \label{tab:data}
-%     \centering
-%     \begin{tabular}{ccccc} 
-%         \hline
-%         No. de registros? &No. de linhas &No. de pontos &No. de ônibus &No. de viagens\\
-%         \hline
-%         xxx &xxx &xxx &xxx &xxx \\
-%         \hline  
-%     \end{tabular}
-% \end{table}
-
-%\ric{É IMPORTANTE? É importante salientar que essas tabelas apresentam redundâncias de dados, pois não foram normalizadas segundo preceitos de banco de dados. Isso significa que foi necessário pré-processá-lo para identificar e remover inconsistências.}
+\begin{table}[htb]
+    \caption{Tabela \emph{VEICULOS}: identifica todos os veículos que atendem o sistema, bem como sua geolocalização. Também relaciona o veiculo com a linha que atende em um determinado instante de tempo.}
+    \centering
+    \begin{tabular}{ p{5cm}p{9cm}} 
+        \hline
+        Atributo & Descrição\\
+        \hline
+        \texttt{VEIC} & código do veículo \\
+        \texttt{LAT} & latitude \\
+        \texttt{LON} & longitude  \\
+        \texttt{DTHR} & data e hora do evento de geolocalização \\
+        \texttt{COD\_LINHA} & código da linha \\
+        \hline  
+    \end{tabular}
+    \label{tab:veiculos}
+\end{table}
 
 \subsection{Python}
 
@@ -436,7 +466,7 @@ open source e geralmente vêm com licenças bastante flexíveis e abertas.
 
 \item Multi propósito: Python pode ser utilizado para desenvolvimento de código rápido e interativo, bem como para construir grandes aplicações.
 
-\item \emph{Cross-platform}: Python está disponível nos mais conhecidos sistemas operacionais, tais como, \emph{Windows}, \emph{Linux} e \emph{MacOS} e pode ser utilizado para o desenvolvimento de aplicações \emph{Desktop}, assim como aplicações \emph{Web}. Além disso Python pode ser utilizado em grandes conjuntos de \emph{clusters} e servidores potentes, assim como em pequenos dispositivos como \emph{Raspberry Pi}.
+\item \emph{Cross-platform}: Python está disponível nos mais conhecidos sistemas operacionais, tais como, \emph{Windows}, \emph{Linux} e \emph{MacOS} e pode ser utilizado para o desenvolvimento de aplicações \emph{Desktop}, assim como aplicações \emph{Web}. Além disso Python pode ser utilizado em grandes conjuntos de \emph{clusters} e servidores potentes, assim como em pequenos dispositivos como dispositivos de IoT (\emph{Internet of Things}).
 
 \item Dinamicamente tipada: Tipos de dados em Python são inferidos em tempo de execução e não previamente declarados como na maioria das linguagens de programação compiladas. 
 
@@ -449,119 +479,60 @@ open source e geralmente vêm com licenças bastante flexíveis e abertas.
 
 \subsection{Neo4J}
 
-Neo4J (\emph{Network Exploration and Optimization 4 Java}) é um sistema gerenciador de banco de dados não relacional, orientado à grafos, desenvolvido pela empresa Neo Technology. É implementado em Java e acessível por programas escritos em outras linguagens utilizando \emph{Cypher Query Language} através de um \emph{endpoint} HTTP ou através de um protocolo denominado \emph{bolt}.
+Neo4J (\emph{Network Exploration and Optimization 4 Java}) é um sistema gerenciador de banco de dados não relacional, orientado à grafos, desenvolvido pela empresa Neo Technology. É implementado em Java e acessível por programas escritos em outras linguagens utilizando \emph{Cypher Query Language} \footnote{https://neo4j.com/developer/cypher/} através de um \emph{endpoint} HTTP ou através de um protocolo denominado \emph{bolt}.
 Neo4J é open-source em sua versão "community edition" e está disponível através de uma licença  GPLv3 (General Public License) para a versão Community Edition, e AGPLv3 (Affero General Public License) para versão Enterprise Edition.
 
-O banco de dados Neo4j implementa um tipo de grafo denominado \emph{property graph model}, capaz de representar multigrafos direcionados, rotulados e com atributos. Estes grafos permitem a representação de vértices e arestas rotulados, além de metadados (propriedades) associados aos vértices e arestas~\cite{rod:10}, particularmente importantes na implementação de TVGs. Além disso, o banco de dados Neo4j tem outras características que favorecem a implementação: (i) armazenamento persistente e transacional de grafos de elevada dimensão; suporte para análise em profundidade via buscas eficientes de múltiplos saltos; (iii) suporte para linguagem declarativa de \emph{queries} de grafos denominada Cypher\footnote{https://neo4j.com/docs/cypher-manual/current/}.
+O banco de dados Neo4j implementa um tipo de grafo denominado \emph{property graph model}, capaz de representar multigrafos direcionados, rotulados e com atributos~\cite{bruggen:2014}. Estes grafos permitem a representação de vértices e arestas rotulados, além de metadados (propriedades) associados aos vértices e arestas~\cite{rod:10}, particularmente importantes na implementação de TVGs. Além disso, o banco de dados Neo4j tem outras características que favorecem a implementação: (i) armazenamento persistente e transacional de grafos de elevada dimensão; suporte para análise em profundidade via buscas eficientes de múltiplos saltos; (iii) suporte para linguagem declarativa de \emph{queries} de grafos denominada Cypher\footnote{https://neo4j.com/docs/cypher-manual/current/}.
 
-
-This graph data model gives us four different fundamental building blocks to
-structure and store our data. Let's go through them:
-
+Um exemplo de property graph model pode ser analisado através da Figura~\ref{fig:propertygraphmodel}:
 
  \begin{figure}[!h]
- \caption{Property Graph Model}
+ \caption{Labeled Property Graph Model}
      \centering
-     \includegraphics[scale=.60]{./Capitulo3/img/grafo-rotulado.png}
+     \includegraphics[scale=.50]{./Capitulo3/img/labeled-property-graph-model.png}
          \label{fig:propertygraphmodel}
-     \fonte{Property Graph Model~\cite{bruggen:2014}}
+     \fonte{Labeled Property Graph Model. Adaptado de ~\cite{bruggen:2014}}
  \end{figure}
  
+Na Figura~\ref{fig:propertygraphmodel} podem ser identificados os seguintes componentes:
 
-•   Nodes: These are typically used to store entity information. In the preceding
-example, these are the individual books, readers, and authors that are present
-in the library data model.
+\begin{itemize}
+    \item Nós ou Vértices: São utilizados para armazenamento de informações da entidade. Na Figura~\ref{fig:propertygraphmodel} estes são os livros, leitores e autores que estão presentes no modelo.
+    
+    \item Relacionamentos: São utilizados para conectar nós uns aos outros. Os relacionamentos sempre têm um tipo, um nó inicial e um nó final e uma direção. 
+    Eles podem ser auto-referenciados e nunca podem ficar pendurados (faltando nó inicial ou nó final). Figura~\ref{fig:propertygraphmodel} os relacionamentos são representados através das arestas ''ESCREVEU'' e  ''RECOMENDADO''.
+    
+    \item Propriedades: Propriedades são pares de nome/valor e podem estar presentes e armazenados tanto em nós quanto em relacionamentos. Na Figura~\ref{fig:propertygraphmodel}, ''nome'' e ''nascimento'' são exemplos de propriedades dos nós Autor e Leitor e ''data'' é um exemplo de propriedade do relacionamento ''RECOMENDADO''.
+     
+    \item Rótulos: Rótulos são um meio eficiente de proporcionar a criação de subgrafos. A atribuição de rótulos aos nós do modelo tem como uma das finalidades principais a simplificação do modelo não sendo mais necessária a criação de uma propriedade de tipo no nó. Rótulos também podem ser utilizados para indexação de informação no banco de dados Neo4J.Na Figura~\ref{fig:propertygraphmodel}, rótulos são representados nos nós por ''Leitor'', ''Livro'' e ''Autor''.
 
-•	 Relationships: These are used to connect nodes to one another explicitly
-and therefore provide a means of structuring your entities. They are the
-equivalent of an explicitly stored, and therefore pre-calculated, join-like
-operation in a relational database management system. As we have seen
-in the previous chapters, joins are no longer a query-time operation—they
-are as simple as the traversal of a relationship connecting two nodes.
-Relationships always have a type, a start- and an end-node, and a direction.
-They can be self-referencing/looping and can never be dangling (missing
-start- or end-node).
-
-•	 Properties: Both nodes and relationships are containers for properties,
-which are effectively name/value pairs. In the case of the nodes, this is
-very intuitive. Just like a record in the relational database world has one or
-more fields or attributes, so can the node have one or more properties. Less
-intuitive is the fact that relationships can have properties too. These are used
-to further qualify the strength or quality of a relationship and can be used
-during queries/traversals to evaluate the patterns that we are looking for.
-
- Labels: This was a fundamental data model construct that was added to
-Neo4j with Version 2.0 at the end of 2013. Labels are a means to quickly and
-efficiently create subgraphs. By assigning labels to nodes, Neo4j makes the
-data model of most users a lot simpler. There is no longer a need to work
-with a type property on the nodes, or a need to connect nodes to definition
-nodes that provide meta-information about the graph. Neo4j now does
-this out of the box—and this is a huge asset, now and for the future. At
-the time of writing this book, labels are primarily used for indexing and
-some limited schema constraints. However, in future, it is likely that the
-structural understanding that labels provide about the data stored in the
-graph will be used for other purposes such as additional schema, security,
-graph sharding/distribution—and perhaps others.
-
+\end{itemize}
 
 Uma das importantes funcionalidades do Neo4J é a utilização de plugins e bibliotecas para consulta ao banco de dados e execução de algoritmos de redes complexas. 
 Dentre as várias bibliotecas podemos citar a \emph{Neo4j Graph Algorithms} que fornece um conjunto de procedimentos definidos pelo usuário que podem ser executadas através da linguagem de consulta Cypher.  
-A biblioteca \emph{Neo4j Graph Algorithms} inclui algoritmos para análise de grafos e fluxos de trabalho de aprendizado de máquina com suporte a até dezenas de bilhões de nós e relacionamentos.
+A biblioteca \emph{Neo4j Graph Algorithms} \footnote{https://neo4j.com/docs/graph-algorithms/current/} inclui algoritmos para análise de grafos e fluxos de trabalho de aprendizado de máquina com suporte a até dezenas de bilhões de nós e relacionamentos.
 
 Outra biblioteca muito importante utilizada neste trabalho é a \emph{Neo4j Awesome Procedures on
-Cypher (APOC)}. Esta biblioteca consiste em mais de 450 procedimentos e funções que auxiliam tarefas comuns como integração de dados, conversão de tipagem de dados e refatoração de modelos.
+Cypher (APOC)} \footnote{https://neo4j.com/labs/apoc/}. Esta biblioteca consiste em mais de 450 procedimentos e funções que auxiliam tarefas comuns como integração de dados, conversão de tipagem de dados e refatoração de modelos.
 
-
-CYPHER
-
-One of the defining features of the Neo4j graph database product today is its
-wonderful query language, called Cypher. Cypher is a declarative, pattern-matching
-query language that makes graph database management systems understandable and
-workable for any database user—even the less technical ones.
-The key characteristic of Cypher is, in my opinion, that it is a declarative language,
-opposed to other imperative query languages that have existed for quite some time.
-
-Why is this so important? Here are your answers:
-
-•	 Declarative languages allow you to state what you're looking for, declare
-the pattern that you would like to see retrieved, and then let the database
-worry about how to go about retrieving that data.
-In an imperative (query) language, you would have to tell the database
-specifically what to do to get to the data and retrieve i
-
-
-Declarative languages separate the concern of stating the problem, from
-solving it. This allows greater readability of the queries that you write,
-which is important as people tend to read their database queries more
-often than they write them. This piece of your software will therefore
-become more readable and shareable with others, and long term
-maintenance of that easy-to-read query becomes so much easier.
-
-•	 Declarative languages will allow the database to use the information that
-it holds about the nature and structure of the data to answer your question
-more efficiently. Essentially, it allows query optimizations that you would
-never have known of or thought about in an imperative approach. Therefore,
-declarative languages can be faster—at least over time as the optimization
-algorithms mature.
-
-•	 Declarative languages are great for adhoc querying of your database,
-without you having to write complex software routines to do so.
 
 \subsection{Apache Spark}
 
 
-Apache Spark (doravante apenas Spark) é um mecanismo de análise para dados em grande escala pro‐
-cessação. Ele usa uma abstração de tabela chamada DataFrame para representar e processar dados em
-linhas de colunas nomeadas e digitadas. A plataforma integra diversas fontes de dados e
-suporta linguagens como Scala, Python e R. Spark oferece suporte a várias análises
-bibliotecas. Seu sistema baseado em memória opera usando gráficos de computação distribuídos de forma eficiente.
+Apache Spark é uma plataforma de processamento e análise de dados em grande escala. 
+Ele usa uma abstração de tabela chamada DataFrame para representar e processar dados.
+A plataforma integra diversas fontes de dados e suporta linguagens como Scala, Python e R. O Apache Spark fornece algumas bibliotecas, tais como:
 
-Apache Spark (henceforth just Spark) is an analytics engine for large-scale data pro‐
-cessing. It uses a table abstraction called a DataFrame to represent and process data in
-rows of named and typed columns. The platform integrates diverse data sources and
-supports languages such as Scala, Python, and R. Spark supports various analytics
-libraries, as shown in Figure 3-1. Its memory-based system operates by using efficiently distributed compute graphs.
-
+\begin{itemize}
+    \item Spark SQL: Fornece a capacidade de executar SQL-like queries com a finalidade de consultar e explorar grandes conjuntos de dados.
+    
+    \item Spark MLIB: Prove algoritmos e pipelines de processamento de apredizado de máquina.
+    
+    \item Spark Streaming: Prove a capacidade de processamento de dados near real-time.
+    
+    \item Spark GraphX: Utilizado para processamento de grafos. 
+    
+\end{itemize}
 
 \subsection{Transformação do \emph{dataset} para a base de dados de grafo do Neo4j}
 \label{subsec:work}
@@ -573,25 +544,79 @@ A Figura~\ref{fig:workflow} mostra o fluxo de transformação dos dados para a c
  \caption{Fluxo de ingestão de dados}
      \centering
      \includegraphics[scale=.45]{./Capitulo3/img/data-flow.png}
-         \label{fig:dataflow}
+         \label{fig:workflow}
      \fonte{Autoria própria}
  \end{figure}
  
  
-A primeira etapa consiste no carregamento dos dados brutos (em formato JSON) para uma área temporária de armazenamento (ou \emph{data lake}). Os arquivos JSON são transformados em arquivos parquet\footnote{https://parquet.apache.org/} \cite{Boufea:17} utilizando o Apache Spark. Arquivos parquet são formatos de armazenamento em colunas, otimizados para compressão e rápida recuperação de dados. 
-%Nesta etapa é realizada somente a transformação de formato de arquivo e armazenamento de dados em uma área denominada data lake.
+A primeira etapa consiste no carregamento dos dados brutos (em formato JSON) para uma área de armazenamento (ou \emph{data lake}). Os arquivos JSON são transformados em arquivos parquet\footnote{https://parquet.apache.org/} \cite{Boufea:17} utilizando o Apache Spark. Arquivos parquet são formatos de armazenamento em colunas, otimizados para compressão e rápida recuperação de dados. 
 Na sequência, o conteúdo do \emph{data lake} é processado - também usando o Apache Spark - para gerar arquivos no formato CSV com os vértices e arestas do modelo de grafo apresentado na Seção~\ref{sec:met}. 
 
-Embora vários fluxos de transformação de dados tenham sido implementados, detalha-se a seguir as transformações dos dados que criam o vértice \emph{Stop} e a aresta \texttt{EVENT\_STOP} do grafo. Estas estruturas modelam a dinâmica de movimentação dos ônibus e justificam o uso de um grafo variante no tempo.
-%\mar{(Keiko e Ricardo: mexi nessa linha. Veja se melhorou.}
+Diversos fluxos de transformação de dados foram implementados. Detalha-se a seguir as transformações dos dados que criam o vértice \emph{Event} e a aresta \texttt{IS\_NEAR\_BY} do grafo. Estas estruturas modelam a dinâmica de movimentação dos ônibus e justificam o uso de um grafo variante no tempo.
 
-% O vértice \emph{Stop} é criado a partir da tabela \emph{VEICULOS} (Tabela~\ref{tab:veiculos} do Apêndice), que contém a geolocalização dos ônibus nos respectivos instantes de tempo. Com essa informação, calcula-se a distância percorrida, o tempo decorrido entre posicionamentos consecutivos e a velocidade média em km/h. Se a velocidade for menor do que 15 km/h, assume-se que houve uma parada do ônibus neste intervalo de tempo e um vértice \emph{Stop} é gerado no grafo com os respectivos atributos.
+O vértice \emph{Event} é criado a partir da tabela \emph{VEICULOS} (Tabela~\ref{tab:veiculos} ), que contém a geolocalização dos ônibus nos respectivos instantes de tempo. Com essa informação, calcula-se a distância percorrida, o tempo decorrido entre posicionamentos consecutivos e a velocidade média em km/h.
 
-O vértice \emph{Stop} é criado a partir dos dados de geolocalização dos ônibus nos respectivos instantes de tempo (ver descrição da tabela \emph{VEICULOS} no dicionário de dados do repositório). Com essa informação, calcula-se a distância percorrida, o tempo decorrido entre posicionamentos consecutivos e a velocidade média em km/h. Se a velocidade for menor do que 15 km/h, assume-se que houve uma parada do ônibus neste intervalo de tempo e um vértice \emph{Stop} é gerado no grafo com os respectivos atributos.
 
-% A aresta \texttt{EVENT\_STOP} é criada a partir dos vértices \emph{Stop} previamente obtidos das linhas dos ônibus, dos pontos de ônibus e da tabela horária dos ônibus nas linhas (Tabelas~\ref{tab:linhas}, \ref{tab:pontos_linha} e \ref{tab:tabela_veiculo} do Apêndice, respectivamente). Se uma parada (vértice \emph{Stop}) ocorrer a menos de 20 m de um ponto de ônibus (vértice \emph{Bus Stop}), considera-se que tal parada ocorreu em um ponto de ônibus e, portanto, cria-se uma aresta \texttt{EVENT\_STOP} para conectar os vértices \emph{Stop} e \emph{Bus Stop} no grafo.
-% Uma vez construído o banco de dados de grafo para o transporte, consultas e análises de redes complexas podem ser realizadas a partir do Neo4j (\emph{Data Analysis} na Figura~\ref{fig:workflow}).
+\alt{Se a velocidade for menor do que 15 km/h}, assume-se que houve uma parada do ônibus neste intervalo de tempo e um vértice \emph{Event} é gerado no grafo com os respectivos atributos listados na tabela~\ref{tab:vertice_event}, entretanto com o atributo moving\_status com o valor \emph{STOPPED}.
 
-A aresta \texttt{EVENT\_STOP} é criada a partir dos vértices \emph{Stop} previamente obtidos das linhas dos ônibus, dos pontos de ônibus e da tabela horária dos ônibus nas linhas (ver descrição das tabelas \emph{LINHAS}, \emph{PONTOS\_LINHA} e \emph{TABELA\_VEICULO}, respectivamente, no dicionário de dados do repositório). Se uma parada (vértice \emph{Stop}) ocorrer a menos de 20 m de um ponto de ônibus (vértice \emph{Bus Stop}), considera-se que tal parada ocorreu em um ponto de ônibus e, portanto, cria-se uma aresta \texttt{EVENT\_STOP} para conectar os vértices \emph{Stop} e \emph{Bus Stop} no grafo.
+\alt{Entretanto se a velocidade for maior ou igual a 15 km/h}, assume-se que o veículo está se movimentando, logo são aplicadas as seguintes regras:
+ \begin{itemize}
+     \item é calculada a média das velocidades posicionadas do veículo entre os vértice \emph{Event} anterior cuja a propriedade moving\_status se encontre com o valor \emph{STOPPED} e o vértice \emph{Event} posterior, também com a propriedade moving\_status com o valor \emph{STOPPED}.
+     
+     \item é tomado o timestamp médio entre os horários de posicionamento do veículo entre o vértice \emph{Event} anterior cuja a propriedade moving\_status com o valor \emph{STOPPED} e o vértice \emph{Event} posterior, também com a propriedade moving\_status com o valor \emph{STOPPED}
+     
+     \item é tomado a latitude e longitude média entre posicionamentos do veículo entre o vértice \emph{Event} anterior cuja a propriedade moving\_status  com o valor \emph{STOPPED}  e o vértice \emph{Event} posterior, também com a propriedade moving\_status com o valor \emph{STOPPED}.
+     
+ \end{itemize}
+ Realizados os cálculos é criado um vértice \emph{Event} com o atributo moving\_status com o valor \emph{MOVING}.
+
+
+A aresta \texttt{IS\_NEAR\_BY} é criada a partir dos vértices \emph{BusStop} e \emph{Event} previamente obtidos das linhas dos ônibus, dos pontos de ônibus e da tabela horária dos ônibus nas linhas (Tabelas~\ref{tab:linhas}, \ref{tab:pontos_linha} e \ref{tab:tabela_veiculo} respectivamente). 
+
+Se uma evento de parada (vértice \emph{Event} com atributo moving\_status com o valor \emph{STOPPED} ) ocorrer a menos de 30 metros de um ponto de ônibus (vértice \emph{BusStop}), considera-se que tal parada ocorreu em um ponto de ônibus e, portanto, cria-se uma aresta \texttt{IS\_NEAR\_BY} para conectar os vértices \emph{Event} e \emph{BusStop} no grafo.
+
 Uma vez construído o banco de dados de grafo para o transporte, consultas e análises de redes complexas podem ser realizadas a partir do Neo4j (\emph{Data Analysis} na Figura~\ref{fig:workflow}).
- 
+
+\section{Análise da integração temporal}
+\label{sec:itemporal}
+
+\ric{Aqui precisa detalhar e justificar as decisões feitas para análise}
+
+\ric{Foram selecionadas 15 (ou 30) áreas potenciais para centroides. Criterios para descartar determinadas áreas:
+distância entre clusters; proximidade com terminal; efeito corredor; caso Rui Barbosa: as linhas chegam concentradas em um ponto (identificado) e se distribuem na praça.}
+
+\ric{Resumo da metodologia}
+
+\begin{enumerate}
+    \item identificam-se os pontos com o maior número de linhas, os quais serão os centroides dos clusters a serem analisados;
+    %\item Para cada ponto de ônibus, obtém-se uma série temporal com o número de eventos (paradas de ônibus) em uma janela deslizante de 10 min, calculada minuto a minuto ao longo do período considerado (0 a 24 horas?);
+    
+    %\item Identificam-se os 10 pontos (centroides) mais bem servidos em termos do número de eventos agregados para todos o período considerado;
+    
+    \item Para cada centroide, selecionam-se os pontos a uma distância de 600~m do centroide e gera-se uma matriz de correlação entre as séries temporais de cada ponto desta região;
+    
+    \item Identificam-se os pontos de maior correlação (com o centroide?);
+    \item Estes pontos serão os candidatos para estabelecer integração temporal.
+\end{enumerate}
+
+\ric{Colocar as decisões tomadas na forma de parâmetros que serão utilizados nos resultados.}
+
+\begin{table}[htb]
+    \caption{Parâmetros usados na análise da integração temporal.}
+    \centering
+    \begin{tabular}{ p{5cm}p{9cm}} 
+        \hline
+        Parâmetro & Descrição\\
+        \hline
+        Tamanho da janela & Tamanho da janela deslizante de tempo utilizada para computar o número de paradas em um ponto \\
+        Passo da janela & Passo de deslocamento da janela de tempo \\
+        Raio do cluster & Área de abrangência de cada centroide ponto de ônibus  \\
+        Separação entre clusters  & Distância mínima considerada entre clusters \\
+        \hline  
+    \end{tabular}
+    \label{tab:par}
+\end{table}
+
+\section{Sumário do capítulo}
+
+\ric{Destacar os pontos principais do capítulo e eventuais ganchos com outros capítulos.}
